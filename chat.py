@@ -123,55 +123,55 @@ def extract_relative_url(content):
     return None
 
 def card(product_details):
-    rows = len(product_details) // 4 + (len(product_details) % 4 > 0)  # Calculate the number of rows
+    if product_details is not None:
+        rows = len(product_details) // 4 + (len(product_details) % 4 > 0)  # Calculate the number of rows
 
-    for row in range(rows):
-        cols = st.columns(4, gap="medium")  # 4 columns with equal padding
-        for idx, col in enumerate(cols):
-            product_idx = row * 4 + idx
-            if product_idx < len(product_details):
-                product = product_details[product_idx]
-                
-                # Display the image with fixed height using HTML
-                with col:
-                    st.markdown(
-                        f"""
-                        <div style="text-align: center; margin-bottom: 10px;">
-                            <img src="{product['image_url']}" 
-                                style="height: 300px; object-fit: cover; border-radius: 8px;" 
-                                alt="Product Image">
-                        </div>
-                        <div style="text-align: center;">
-                            <a href="{product['product_link']}" target="_blank" style="
-                                text-decoration: none; 
-                                background-color: #007BFF; 
-                                color: white; 
-                                padding: 8px 12px; 
-                                border-radius: 12px; 
-                                font-size: 14px; 
-                                display: inline-block;">
-                                {product['sku']}
-                            </a>
-                        </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
+        for row in range(rows):
+            cols = st.columns(4, gap="medium")  # 4 columns with equal padding
+            for idx, col in enumerate(cols):
+                product_idx = row * 4 + idx
+                if product_idx < len(product_details):
+                    product = product_details[product_idx]
+                    
+                    # Display the image with fixed height using HTML
+                    with col:
+                        st.markdown(
+                            f"""
+                            <div style="text-align: center; margin-bottom: 10px;">
+                                <img src="{product['image_url']}" 
+                                    style="height: 300px; object-fit: cover; border-radius: 8px;" 
+                                    alt="Product Image">
+                            </div>
+                            <div style="text-align: center;">
+                                <a href="{product['product_link']}" target="_blank" style="
+                                    text-decoration: none; 
+                                    background-color: #007BFF; 
+                                    color: white; 
+                                    padding: 8px 12px; 
+                                    border-radius: 12px; 
+                                    font-size: 14px; 
+                                    display: inline-block;">
+                                    {product['sku']}
+                                </a>
+                            </div>
+                            """,
+                            unsafe_allow_html=True
+                        )
 
 
 def display_chat_messages():
     for i, message in enumerate(st.session_state.messages):
         # Skip the first user message, if necessary
-        if i == 0 and message["role"] == "user":
-            continue
-        avatar = USER_AVATAR if message["role"] == "user" else BOT_AVATAR
-        with st.chat_message(message["role"], avatar=avatar):
-            # Display text content if it exists
-            if "content" in message and message["content"]:
-                st.markdown(message["content"])
-            # Display the image if image_url exists
-            if "product" in message and message["product"]:
-                product_details = message['product']
-                card(product_details=product_details)
+        if i != 0:
+            avatar = USER_AVATAR if message["role"] == "user" else BOT_AVATAR
+            with st.chat_message(message["role"], avatar=avatar):
+                # Display text content if it exists
+                if "content" in message and message["content"]:
+                    st.markdown(message["content"])
+                # Display the image if image_url exists
+                if "product" in message and message["product"]:
+                    product_details = message['product']
+                    card(product_details=product_details)
 
 
 # Function to initialize a "hello" prompt if the history is empty
@@ -231,25 +231,26 @@ def handle_chat_interaction(prompt):
             message_placeholder.markdown(full_response + "|")
         message_placeholder.markdown(full_response)
         url_key = extract_relative_url(full_response)
-        print(url_key)
+        product_details = None  # Default value
         # st.image("https://www.shyaway.com/media/catalog/product/d/i/di1006-moroccanblue-front.jpg?width=420&height=560&optimize=high&fit=bounds", caption="Image")
-        result = get_product_list(url_key, page=1, limit=4)
-        data = result  # If `get_product_list` already returns JSON
-        if "data" in data and "getProductList" in data["data"]:
-            items = data["data"]["getProductList"]["data"]["items"]
-            product_details = [
-                {
-                    'product_link': item['product_link'],
-                    'sku': item['sku'],
-                    'image_url': item['image']['url']
-                }
-                for item in items
-            ]
+        if url_key is not None:
+            result = get_product_list(url_key, page=1, limit=4)
+            data = result  # If `get_product_list` already returns JSON
+            if "data" in data and "getProductList" in data["data"]:
+                items = data["data"]["getProductList"]["data"]["items"]
+                product_details = [
+                    {
+                        'product_link': item['product_link'],
+                        'sku': item['sku'],
+                        'image_url': item['image']['url']
+                    }
+                    for item in items
+                ]
 
-            card(product_details)
+                card(product_details)
 
-        else:
-                print("Unexpected response:", data)
+            else:
+                    print("Unexpected response:", data)
 
         st.session_state.messages.append({
             "role": "assistant",
