@@ -262,7 +262,7 @@ def handle_chat_interaction(prompt):
 
 # Main application logic
 def main():
-    st.title("ChatGPT-like Chatbot Demo")
+    st.title("Shyley")
 
     # Initialize or load chat history
     if "messages" not in st.session_state:
