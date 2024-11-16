@@ -16,7 +16,7 @@ USER_AVATAR = "👤"
 BOT_AVATAR = "🤖"
 
 # Initialize OpenAI client
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "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")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 # Set default OpenAI model
