@@ -3,13 +3,9 @@ import json
 import re
 from openai import OpenAI
 import streamlit as st
-from dotenv import load_dotenv
 import os
 import shelve
 import requests
-
-# Load environment variables
-load_dotenv()
 
 # Constants
 USER_AVATAR = "👤"
