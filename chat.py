@@ -6,6 +6,8 @@ import streamlit as st
 import os
 import shelve
 import requests
+import random
+
 
 # Constants
 USER_AVATAR = "👤"
@@ -218,33 +220,39 @@ def handle_chat_interaction(prompt):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user", avatar=USER_AVATAR):
         st.markdown(prompt)
+    
+    last_prompt=[]
+    last_prompt.append(st.session_state["messages"][0])
+    last_prompt.append({"role": "user", "content": prompt})
 
     with st.chat_message("assistant", avatar=BOT_AVATAR):
         message_placeholder = st.empty()
         full_response = ""
         for response in client.chat.completions.create(
             model=st.session_state["openai_model"],
-            messages=st.session_state["messages"],
+            messages=last_prompt,
             stream=True,
         ):
             full_response += response.choices[0].delta.content or ""
             message_placeholder.markdown(full_response + "|")
         message_placeholder.markdown(full_response)
         url_key = extract_relative_url(full_response)
+
         product_details = None  # Default value
-        # st.image("https://www.shyaway.com/media/catalog/product/d/i/di1006-moroccanblue-front.jpg?width=420&height=560&optimize=high&fit=bounds", caption="Image")
         if url_key is not None:
-            result = get_product_list(url_key, page=1, limit=4)
+            result = get_product_list(url_key, page=1, limit=20)
             data = result  # If `get_product_list` already returns JSON
+            
             if "data" in data and "getProductList" in data["data"]:
                 items = data["data"]["getProductList"]["data"]["items"]
+                random_items = random.sample(items, min(len(items), 4))  # Randomly select up to 4 items
                 product_details = [
                     {
                         'product_link': item['product_link'],
                         'sku': item['sku'],
                         'image_url': item['image']['url']
                     }
-                    for item in items
+                    for item in random_items
                 ]
 
                 card(product_details)
@@ -255,7 +263,7 @@ def handle_chat_interaction(prompt):
         st.session_state.messages.append({
             "role": "assistant",
             "content": full_response,
-            "product": product_details
+            "product": product_details,
         })
     save_chat_history(st.session_state.messages)
 
