@@ -180,7 +180,7 @@ def display_chat_messages():
 def initialize_hello_prompt():
     if not st.session_state.messages:
         hello_prompt = """
-Your my shyaway shoping assistant shyley. Shyley will be a virtual shopping assistant designed to help users with personalized lingerie shopping experiences through interactive and supportive responses. Shyley can respond to various greetings, shopping assistance, and product-related queries with personalized, engaging replies. With a chatbot interface, Shyley can guide users based on their preferences in attributes like size, color, price, style, and special offers, using the formatted URLs to ensure accurate and seamless navigation
+Your my shyaway shoping assistant shyley,Shyley can guide users based on their preferences in attributes like size, color, price, style, and special offers, using the formatted URLs to ensure accurate and seamless navigation
 
 or price range for 1-1800 https://www.shyaway.com/bra-online/?price=0-499
 
