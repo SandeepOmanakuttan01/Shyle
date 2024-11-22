@@ -180,37 +180,48 @@ def display_chat_messages():
 def initialize_hello_prompt():
     if not st.session_state.messages:
         hello_prompt = """
-Your my shyaway shoping assistant shyley,Shyley can guide users based on their preferences in attributes like size, color, price, style, and special offers, using the formatted URLs to ensure accurate and seamless navigation
+Generate a Shyaway product link based on the following details:
+	•	If only one detail is provided (e.g., size, color, fabric, etc.), include it as a single parameter in the URL.
+	•	If multiple details are given, combine them into a single URL. Ensure all spaces in values are replaced with hyphens (-).
 
-or price range for 1-1800 https://www.shyaway.com/bra-online/?price=0-499
+Use the following categories and examples as guidelines:
+	1.	Price Range:
+price=0-499
+Example: https://www.shyaway.com/bra-online/?price=0-499
+	2.	Size:
+size=32F or size=32B,34C
+Example: https://www.shyaway.com/bra-online/?size=32f,34c
+	3.	Offers:
+offers=Flat-50%-Off
+Example: https://www.shyaway.com/bra-online/?offers=flat-50-off
+	4.	Color:
+color-family=Black or color-family=Blue,Pink,Prints
+Example: https://www.shyaway.com/bra-online/?color-family=blue,pink
+	5.	Fabric:
+fabric=Nylon,Cotton
+Example: https://www.shyaway.com/bra-online/?fabric=nylon,cotton
+	6.	Other Categories:
+	•	Bra Type: bra-type=push-up,t-shirt
+	•	Bra Style: bra-feature=backless,bridal
+	•	Coverage: bra-coverage=full-coverage
+	•	Padding: bra-padding=lightly-padded
+	•	Wiring: bra-wiring=wired
+	•	Cup Shape: bra-cup-shape=balconette
+	•	Push-Up Level: bra-push-up-level=level-1
+	•	Closure: bra-closure=back-closure
 
-for size 28D, 28DD, 28E, 30B, 30C, 30D, 30DD, 30E, 32B, 32C, 32D, 32DD, 32E, 32F, 32G, 34B, 34C, 34D, 34DD, 34E, 34F, 34G, 36B, 36C, 36D, 36DD, 36E, 36F, 36G, 38B, 38C, 38D, 38DD, 38E, 38F, 38G, 40B, 40C, 40D, 40DD, 40E, 40F, 40G, 42B, 42C, 42D, 42E, 42F, 42G, 44B, 44C, 44D, 44E, 44F, 44G, 46B, 46C, 46D, 48B, 48C, 48D, 50B, 50C, 50D, 52B, 52C, 52D, XS, S, M, L, XL https://www.shyaway.com/bra-online/?size=32f,32g
+	7.	Bra Styles:
+bra-feature=backless,bridal,printed
+Example: https://www.shyaway.com/bra-online/?bra-feature=backless,printed
+For example, combining multiple details:
 
-hor offers buy 3 for 1199, buy 2 for 1299, flat 20% off, buy 3 for 899, flat 50% off, flat 40% off, new arrival ttps://www.shyaway.com/bra-online/?offers=buy-3-for-1199
+Input: size=32B,34C, color=Blue, fabric=Nylon
 
-for colors Black, White, Skin, Brown, Yellow, Orange, Pink, Red, Green, Blue, Purple, Prints https://www.shyaway.com/bra-online/?color-family=brown,grey
+Output:
+https://www.shyaway.com/bra-online/?size=32b,34c&color-family=blue&fabric=nylon
 
-For Fabric Nylon, Viscose-Spandex, Nylon-Polyester Spandex, Cotton, Cotton-Spandex, Lace, Mesh, Modal, Polyester-Spandex, Polycotton-Spandex, Satin https://www.shyaway.com/bra-online/?fabric=nylon,viscose-spandex
-
-For bra Types Beginners, Bralette, Cami, Everyday, Fashion / Fancy, Minimiser, Push-Up, T-Shirt https://www.shyaway.com/bra-online/?bra-type=beginners,bralette
-
-For Bra Styles Backless, Bridal, Casual, Designer, Fancy-Back, Front-Open, Hi-Support, Lacework, Longline, Moulded, No-Sag, Plus-Size, Printed, Sexy, Sleep, Transparent https://www.shyaway.com/bra-online/?bra-feature=backless,bridal
-
-For Coverage 3-4-th Coverage, Demi-Coverage, Full-Coverage https://www.shyaway.com/bra-online/?bra-coverage=3-4th-coverage
-
-For Padding Non-Padded, Padded, Removable-Padding, Lightly-Padded https://www.shyaway.com/bra-online/?bra-padding=non-padded,padded
-
-For Wiring wired,wirefree https://www.shyaway.com/bra-online/?bra-wiring=wired,wirefree
-
-For Cup Shape Balconette, Balcony, Full-Cup, Plunge, T-Shirt Cup https://www.shyaway.com/bra-online/?bra-cup-shape=balconette
-
-For push up levels level-1,level-2,level-3 https://www.shyaway.com/bra-online/?bra-push-up-level=level-1,level-2,level-3
-
-for bra closure back-closure,front-closure,slip-on https://www.shyaway.com/bra-online/?bra-closure=back-closure,front-closure,slip-on
-
-Form user query with different colours, and combination of attributes also but relate the colour family as mentioned in colours links only in the response as well as in URL links to avoid 404 errors
-
-provide the link for asking question link like  https://www.shyaway.com/bra-online/?bra-closure=back-closure,front-closure,slip-on
+If no relevant link is available, provide the default link:
+https://www.shyaway.com/bra-online/
 """
         st.session_state.messages.append({"role": "assistant", "content": hello_prompt})
 
