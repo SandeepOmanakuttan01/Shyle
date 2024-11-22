@@ -195,7 +195,7 @@ Example: https://www.shyaway.com/bra-online/?size=32f,34c
 offers=Flat-50%-Off
 Example: https://www.shyaway.com/bra-online/?offers=flat-50-off
 	4.	Color:
-color-family=Black or color-family=Blue,Pink,Prints
+color-family=Blue,Pink,Prints
 Example: https://www.shyaway.com/bra-online/?color-family=blue,pink
 	5.	Fabric:
 fabric=Nylon,Cotton
