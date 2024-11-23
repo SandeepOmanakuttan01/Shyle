@@ -124,8 +124,9 @@ def extract_query_parameters(content):
     if match:
         full_url = match.group(0)
         # Parse the URL to get query parameters
-        query_params = urlparse(full_url).query.replace("(","").replace(")","")
-        return f"?{query_params}" if query_params else None
+	parsed_url = urlparse(full_url)
+        relative_url = f"{parsed_url.path}?{parsed_url.query}" if parsed_url.query else parsed_url.path
+        return relative_url
     return None
 
 def card(product_details):
