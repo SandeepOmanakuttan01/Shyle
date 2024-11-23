@@ -107,8 +107,7 @@ def save_chat_history(messages):
         db["messages"] = messages
 
 
-
- def extract_relative_url(content):
+def extract_relative_url(content):
     """
     Extracts the relative URL from a Markdown-style link in the given text content.
 
