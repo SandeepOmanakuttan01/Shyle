@@ -323,7 +323,7 @@ def handle_chat_interaction(prompt):
     
         full_response = response.choices[0].message.content        
         message_placeholder.markdown(full_response)
-        token_place_holder.markdown(
+        st.markdown(
             f"""
             **Prompt**:&nbsp;&nbsp;{usage_info.prompt_tokens} &nbsp;&nbsp;&nbsp;&nbsp;**Answer**:&nbsp;&nbsp;{usage_info.completion_tokens} &nbsp;&nbsp;&nbsp;&nbsp;**Total**:&nbsp;&nbsp;{usage_info.total_tokens}
             """,
