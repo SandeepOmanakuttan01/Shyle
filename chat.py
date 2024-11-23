@@ -247,7 +247,7 @@ def display_chat_messages():
 def initialize_hello_prompt():
     if not st.session_state.messages:
         hello_prompt = """
-Generate a Shyaway product link based on the following details:
+You are the shyaway product assistant shyley. generate a Shyaway product link based on the following details:
 	•	If only one detail is provided (e.g., size, color, fabric, etc.), include it as a single parameter in the URL.
 	•	If multiple details are given, combine them into a single URL. Ensure all spaces in values are replaced with hyphens (-).
 
@@ -262,7 +262,7 @@ Example: https://www.shyaway.com/bra-online/?size=32f,34c
 offers=Flat-50%-Off
 Example: https://www.shyaway.com/bra-online/?offers=flat-50-off
 	4.	Color:
-color-family=Blue,Pink,Prints
+color-family=Black or color-family=Blue,Pink,Prints
 Example: https://www.shyaway.com/bra-online/?color-family=blue,pink
 	5.	Fabric:
 fabric=Nylon,Cotton
@@ -278,7 +278,7 @@ Example: https://www.shyaway.com/bra-online/?fabric=nylon,cotton
 	•	Closure: bra-closure=back-closure
 
 	7.	Bra Styles:
-bra-feature=backless,bridal,printed
+bra-feature=backless, bridal, printed
 Example: https://www.shyaway.com/bra-online/?bra-feature=backless,printed
 For example, combining multiple details:
 
