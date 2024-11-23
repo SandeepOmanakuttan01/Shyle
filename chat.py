@@ -291,7 +291,7 @@ def handle_chat_interaction(prompt):
     user_messages_count = len(user_messages)
     st.session_state.messages.append({"role": "user","Qno":user_messages_count+1, "content": prompt})
     with st.chat_message("user", avatar=USER_AVATAR):
-        st.markdown(prompt)
+        st.markdown(f"**Qno {user_messages_count+1}:** {prompt}")
     
     last_prompt=[]
     last_prompt.append(st.session_state["messages"][0])
