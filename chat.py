@@ -1,5 +1,3 @@
-import ast
-import json
 import re
 from openai import OpenAI
 import streamlit as st
@@ -12,6 +10,7 @@ import random
 # Constants
 USER_AVATAR = "👤"
 BOT_AVATAR = "🤖"
+
 
 # Initialize OpenAI client
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -149,7 +148,6 @@ def card(product_details):
                     offer_label2 = ""
                     offer_color2 = "#FF5733"  # Default color
                     
-                    print(product.get("offer"))
                     # Handle 'offer' if it's a list
                     if isinstance(product.get("offer"), list):
                         for i, offer in enumerate(product["offer"]):
@@ -214,6 +212,7 @@ def card(product_details):
                             """,
                             unsafe_allow_html=True
                         )
+                       
 
 
 def display_chat_messages():
@@ -241,6 +240,7 @@ def display_chat_messages():
                 if "product" in message and message["product"]:
                     product_details = message['product']
                     card(product_details=product_details)
+
 
 
 # Function to initialize a "hello" prompt if the history is empty
@@ -297,7 +297,6 @@ https://www.shyaway.com/bra-online/
 def handle_chat_interaction(prompt):
     user_messages = [msg for msg in st.session_state.messages if msg.get("role") == "user"]
     user_messages_count = len(user_messages)
-    
     st.session_state.messages.append({"role": "user","Qno":user_messages_count, "content": prompt})
     
     with st.chat_message("user", avatar=USER_AVATAR):
@@ -323,7 +322,7 @@ def handle_chat_interaction(prompt):
     
         full_response = response.choices[0].message.content        
         message_placeholder.markdown(full_response)
-        st.markdown(
+        token_place_holder.markdown(
             f"""
             **Prompt**:&nbsp;&nbsp;{usage_info.prompt_tokens} &nbsp;&nbsp;&nbsp;&nbsp;**Answer**:&nbsp;&nbsp;{usage_info.completion_tokens} &nbsp;&nbsp;&nbsp;&nbsp;**Total**:&nbsp;&nbsp;{usage_info.total_tokens}
             """,
@@ -362,7 +361,6 @@ def handle_chat_interaction(prompt):
         })
 
     save_chat_history(st.session_state.messages)
-
 
 def display_total_question_count(placeholder):
     user_messages = [msg for msg in st.session_state.messages if msg.get("role") == "user"]
@@ -427,6 +425,8 @@ def main():
     # # Main chat input
     if prompt := st.chat_input("How can I help?"):
         handle_chat_interaction(prompt)
+
+    
 
 
 
