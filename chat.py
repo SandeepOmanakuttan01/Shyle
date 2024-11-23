@@ -71,6 +71,10 @@ def get_product_list(
               width
               height
             }}
+            offer_data{{
+              label
+              color
+          }}
           }}
         }}
       }}
@@ -125,7 +129,9 @@ def extract_relative_url(content):
     return None
 
 def card(product_details):
-    if product_details is not None:
+    if product_details is None:
+        st.markdown("No releated images found")
+    else:
         rows = len(product_details) // 4 + (len(product_details) % 4 > 0)  # Calculate the number of rows
 
         for row in range(rows):
@@ -134,17 +140,66 @@ def card(product_details):
                 product_idx = row * 4 + idx
                 if product_idx < len(product_details):
                     product = product_details[product_idx]
+
+                    # Initialize offer details
+                    offer_label = ""
+                    offer_color = "#FF5733"  # Default color
+
+                     # Initialize offer details
+                    offer_label2 = ""
+                    offer_color2 = "#FF5733"  # Default color
                     
-                    # Display the image with fixed height using HTML
+                    print(product.get("offer"))
+                    # Handle 'offer' if it's a list
+                    if isinstance(product.get("offer"), list):
+                        for i, offer in enumerate(product["offer"]):
+                            if isinstance(offer, dict):
+                                if(i ==0):
+                                    offer_label = offer.get("label", "")
+                                    offer_color = offer.get("color", "#FF5733")
+                                else:
+                                    offer_label2 = offer.get("label", "")
+                                    offer_color2 = offer.get("color", "#FF5733")
+
                     with col:
+                        # Dynamically add the offer tag only if `offer_label` is not empty
+                        if offer_label2 != "":
+                            offer_tag = f"""
+                            <div style="position: absolute; bottom: 10px; right: 0px; 
+                                background-color: {offer_color}; color: white; padding: 4px 8px; 
+                                border-radius: 4px; font-size: 12px;">
+                                {offer_label}
+                            </div>
+                            <div style="position: absolute; bottom: 40px; right: 0px; 
+                                background-color: {offer_color2}; color: white; padding: 4px 8px; 
+                                border-radius: 4px; font-size: 12px;">
+                                {offer_label2}
+                            </div>
+                            """
+                        elif offer_label:
+                            offer_tag = f"""
+                            <div style="position: absolute; bottom: 10px; right: 0px; 
+                                background-color: {offer_color}; color: white; padding: 4px 8px; 
+                                border-radius: 4px; font-size: 12px;">
+                                {offer_label}
+                            </div>
+                            """
+                        else:
+                            offer_tag= "" 
+
                         st.markdown(
                             f"""
-                            <div style="text-align: center; margin-bottom: 10px;">
+                            <div style="text-align: center; margin-bottom: 10px; position: relative;">
+                                <!-- Product Image -->
                                 <img src="{product['image_url']}" 
                                     style="height: 300px; object-fit: cover; border-radius: 8px;" 
                                     alt="Product Image">
+                                
+                                {offer_tag}
+                           
                             </div>
                             <div style="text-align: center;">
+                                <!-- Product Link -->
                                 <a href="{product['product_link']}" target="_blank" style="
                                     text-decoration: none; 
                                     background-color: #007BFF; 
@@ -161,6 +216,7 @@ def card(product_details):
                         )
 
 
+
 def display_chat_messages():
     for i, message in enumerate(st.session_state.messages):
         # Skip the first user message, if necessary
@@ -169,7 +225,10 @@ def display_chat_messages():
             with st.chat_message(message["role"], avatar=avatar):
                 # Display text content if it exists
                 if "content" in message and message["content"]:
-                    st.markdown(message["content"])
+                    if "Qno" in message and message["Qno"]:
+                         st.markdown(f"**Qno {message['Qno']}:** {message['content']}")
+                    else:
+                        st.markdown(message["content"])
                 # Display the image if image_url exists
                 if "product" in message and message["product"]:
                     product_details = message['product']
@@ -228,7 +287,9 @@ https://www.shyaway.com/bra-online/
 
 # Function to handle chat interaction
 def handle_chat_interaction(prompt):
-    st.session_state.messages.append({"role": "user", "content": prompt})
+    user_messages = [msg for msg in st.session_state.messages if msg.get("role") == "user"]
+    user_messages_count = len(user_messages)
+    st.session_state.messages.append({"role": "user","Qno":user_messages_count+1, "content": prompt})
     with st.chat_message("user", avatar=USER_AVATAR):
         st.markdown(prompt)
     
@@ -261,7 +322,8 @@ def handle_chat_interaction(prompt):
                     {
                         'product_link': item['product_link'],
                         'sku': item['sku'],
-                        'image_url': item['image']['url']
+                        'image_url': item['image']['url'],
+			'offer': item.get('offer_data', {})
                     }
                     for item in random_items
                 ]
@@ -296,6 +358,12 @@ def main():
             st.session_state.messages = []
             save_chat_history([])
             initialize_hello_prompt()  # Reload the hello prompt
+
+   # Iterate through the messages and filter by role == "user"
+    for i, message in enumerate([msg for msg in st.session_state.messages if msg["role"] == "user"], start=1):
+        message["Qno"] = i  # Assign a sequential number starting from 1
+    
+    save_chat_history(st.session_state.messages)
 
     # Display all chat messages
     display_chat_messages()
