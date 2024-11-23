@@ -330,7 +330,6 @@ def handle_chat_interaction(prompt):
 
     with st.chat_message("assistant", avatar=BOT_AVATAR):
         message_placeholder = st.empty()
-        token_place_holder = st.empty
         
         # Making a non-streaming request
         response = client.chat.completions.create(
@@ -352,9 +351,9 @@ def handle_chat_interaction(prompt):
         )
         
         # Process the URL key
-        url_key = extract_query_parameters(full_response)
-	if url_key is None:
- 		url_key = extract_relative_url(full_response)
+        url_key = extract_relative_url(full_response)
+        if url_key is None:
+            url_key = extract_query_parameters(full_response)
 
         product_details = None  # Default value
         if url_key is not None:
