@@ -216,7 +216,6 @@ def card(product_details):
                         )
 
 
-
 def display_chat_messages():
     for i, message in enumerate(st.session_state.messages):
         # Skip the first user message, if necessary
@@ -229,6 +228,15 @@ def display_chat_messages():
                          st.markdown(f"**Qno {message['Qno']}:** {message['content']}")
                     else:
                         st.markdown(message["content"])
+
+                if "usage" in message and message["usage"]:
+                    usage = message["usage"]
+                    st.markdown(
+                        f"""
+                        **Prompt**:&nbsp;&nbsp;{usage.prompt_tokens} &nbsp;&nbsp;&nbsp;&nbsp;**Answer**:&nbsp;&nbsp;{usage.completion_tokens} &nbsp;&nbsp;&nbsp;&nbsp;**Total**:&nbsp;&nbsp;{usage.total_tokens}
+                        """,
+                        unsafe_allow_html=True
+                    )
                 # Display the image if image_url exists
                 if "product" in message and message["product"]:
                     product_details = message['product']
@@ -289,31 +297,46 @@ https://www.shyaway.com/bra-online/
 def handle_chat_interaction(prompt):
     user_messages = [msg for msg in st.session_state.messages if msg.get("role") == "user"]
     user_messages_count = len(user_messages)
-    st.session_state.messages.append({"role": "user","Qno":user_messages_count+1, "content": prompt})
+    
+    st.session_state.messages.append({"role": "user","Qno":user_messages_count, "content": prompt})
+    
     with st.chat_message("user", avatar=USER_AVATAR):
         st.markdown(f"**Qno {user_messages_count+1}:** {prompt}")
-    
-    last_prompt=[]
+
+    last_prompt = []
     last_prompt.append(st.session_state["messages"][0])
     last_prompt.append({"role": "user", "content": prompt})
 
     with st.chat_message("assistant", avatar=BOT_AVATAR):
         message_placeholder = st.empty()
-        full_response = ""
-        for response in client.chat.completions.create(
+        token_place_holder = st.empty
+        
+        # Making a non-streaming request
+        response = client.chat.completions.create(
             model=st.session_state["openai_model"],
-            messages=last_prompt,
-            stream=True,
-        ):
-            full_response += response.choices[0].delta.content or ""
-            message_placeholder.markdown(full_response + "|")
+            messages=last_prompt
+        )
+
+        # Access the token usage directly from the response's attribute
+        if hasattr(response, 'usage'):
+            usage_info = response.usage
+    
+        full_response = response.choices[0].message.content        
         message_placeholder.markdown(full_response)
+        token_place_holder.markdown(
+            f"""
+            **Prompt**:&nbsp;&nbsp;{usage_info.prompt_tokens} &nbsp;&nbsp;&nbsp;&nbsp;**Answer**:&nbsp;&nbsp;{usage_info.completion_tokens} &nbsp;&nbsp;&nbsp;&nbsp;**Total**:&nbsp;&nbsp;{usage_info.total_tokens}
+            """,
+            unsafe_allow_html=True
+        )
+        
+        # Process the URL key
         url_key = extract_relative_url(full_response)
 
         product_details = None  # Default value
         if url_key is not None:
             result = get_product_list(url_key, page=1, limit=20)
-            data = result  # If `get_product_list` already returns JSON
+            data = result
             
             if "data" in data and "getProductList" in data["data"]:
                 items = data["data"]["getProductList"]["data"]["items"]
@@ -323,54 +346,88 @@ def handle_chat_interaction(prompt):
                         'product_link': item['product_link'],
                         'sku': item['sku'],
                         'image_url': item['image']['url'],
-			'offer': item.get('offer_data', {})
+                        'offer': item.get('offer_data', {})
                     }
                     for item in random_items
                 ]
-
                 card(product_details)
-
             else:
-                    print("Unexpected response:", data)
-
+                print("Unexpected response:", data)
+        
         st.session_state.messages.append({
             "role": "assistant",
             "content": full_response,
             "product": product_details,
+            "usage":usage_info
         })
+
     save_chat_history(st.session_state.messages)
+
+
+def display_total_question_count(placeholder):
+    user_messages = [msg for msg in st.session_state.messages if msg.get("role") == "user"]
+    total_questions = len(user_messages)+1
+    
+    # Calculate total tokens used by the user prompts and assistant responses
+    total_prompt_tokens = sum(msg["usage"].prompt_tokens for msg in st.session_state.messages if "usage" in msg)
+    total_answer_tokens = sum(msg["usage"].completion_tokens for msg in st.session_state.messages if "usage" in msg)
+    total_tokens = total_prompt_tokens + total_answer_tokens
+    
+    # Display the information
+    placeholder.markdown(f"""
+    **Total Questions Asked**: {total_questions} 
+
+    **Total Prompt Tokens Used**: {total_prompt_tokens}  
+
+    **Total Answer Tokens Used**: {total_answer_tokens}  
+
+    **Total Tokens Used**: {total_tokens}  
+    """)
+
+
 
 
 # Main application logic
 def main():
-    st.title("Shyley")
 
+     # Create placeholders for the title and question count
+    title_placeholder = st.empty()
+   
+    
+        # Display the title and question count at the top
+    title_placeholder.title("Shyley")
+
+    data = load_chat_history()
     # Initialize or load chat history
     if "messages" not in st.session_state:
-        st.session_state.messages = load_chat_history()
+        st.session_state.messages = data
 
+    # display_total_question_count(question_count_placeholder)
+
+
+  # Assign a sequential number starting from 1
     # Load default hello prompt if history is empty
     initialize_hello_prompt()
 
-    # Sidebar with a button to delete chat history
+    st.session_state.message = []
+    # # Sidebar with a button to delete chat history
     with st.sidebar:
         if st.button("Delete Chat History"):
             st.session_state.messages = []
             save_chat_history([])
             initialize_hello_prompt()  # Reload the hello prompt
-
-   # # Iterate through the messages and filter by role == "user"
-   #  for i, message in enumerate([msg for msg in st.session_state.messages if msg["role"] == "user"], start=1):
-   #      message["Qno"] = i  # Assign a sequential number starting from 1
+        question_count_placeholder = st.empty()
+        display_total_question_count(question_count_placeholder)
     
-   #  save_chat_history(st.session_state.messages)
-
-    # Display all chat messages
+    # save_chat_history(st.session_state.messages)
+    
+    # # Display all chat messages
     display_chat_messages()
 
-    # Main chat input
+    # # Main chat input
     if prompt := st.chat_input("How can I help?"):
         handle_chat_interaction(prompt)
+
 
 
 if __name__ == "__main__":
