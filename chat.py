@@ -108,6 +108,28 @@ def save_chat_history(messages):
 
 
 
+ def extract_relative_url(content):
+    """
+    Extracts the relative URL from a Markdown-style link in the given text content.
+
+    Args:
+        content (str): Text content containing a URL.
+
+    Returns:
+        str: Extracted relative URL or None if no URL is found.
+    """
+    # Regular expression to match the full URL
+    url_pattern = r'\[.*?\]\((https?://[^\)]+)\)'
+    match = re.search(url_pattern, content)
+    if match:
+        full_url = match.group(1)
+        # Remove the base URL to get the relative URL
+        relative_url = re.sub(r'https?://www\.shyaway\.com/', '', full_url)
+        return relative_url
+    return None
+
+
+
 def extract_query_parameters(content):
     """
     Extracts the query parameters from a plain URL in the given text content.
@@ -332,6 +354,8 @@ def handle_chat_interaction(prompt):
         
         # Process the URL key
         url_key = extract_query_parameters(full_response)
+	if url_key is None:
+ 		url_key = extract_relative_url(full_response)
 
         product_details = None  # Default value
         if url_key is not None:
