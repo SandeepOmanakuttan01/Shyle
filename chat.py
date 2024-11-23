@@ -359,11 +359,11 @@ def main():
             save_chat_history([])
             initialize_hello_prompt()  # Reload the hello prompt
 
-   # Iterate through the messages and filter by role == "user"
-    for i, message in enumerate([msg for msg in st.session_state.messages if msg["role"] == "user"], start=1):
-        message["Qno"] = i  # Assign a sequential number starting from 1
+   # # Iterate through the messages and filter by role == "user"
+   #  for i, message in enumerate([msg for msg in st.session_state.messages if msg["role"] == "user"], start=1):
+   #      message["Qno"] = i  # Assign a sequential number starting from 1
     
-    save_chat_history(st.session_state.messages)
+   #  save_chat_history(st.session_state.messages)
 
     # Display all chat messages
     display_chat_messages()
