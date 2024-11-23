@@ -5,6 +5,7 @@ import os
 import shelve
 import requests
 import random
+from urllib.parse import urlparse
 
 
 # Constants
