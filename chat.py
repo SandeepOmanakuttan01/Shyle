@@ -247,6 +247,9 @@ def display_chat_messages():
                 if "content" in message and message["content"]:
                     if "Qno" in message and message["Qno"]:
                          st.markdown(f"**Qno {message['Qno']}:** {message['content']}")
+			 if "product" in message and message["product"] is None:
+                             # st.image(image="C:/Users/sande/Downloads/Rag-20241116T164700Z-001/Rag/frontEnd/image.png",width=360)
+                             st.markdown("No image found")
                     else:
                         st.markdown(message["content"])
 
