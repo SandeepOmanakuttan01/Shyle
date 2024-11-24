@@ -250,6 +250,7 @@ def display_chat_messages():
                     else:
                         st.markdown(message["content"])
                         if "product" in message and message["product"] is None:
+			     st.image("https://www.shyaway.com/media/wysiwyg/Sorry-no-results-found-350-x-350.jpg",width=360)
                              st.markdown("No image found")
 
                 if "usage" in message and message["usage"]:
