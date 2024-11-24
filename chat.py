@@ -321,12 +321,11 @@ https://www.shyaway.com/bra-online/
         st.session_state.messages.append({"role": "system", "content": hello_prompt})
 
 
-# Function to handle chat interaction
 def handle_chat_interaction(prompt):
     user_messages = [msg for msg in st.session_state.messages if msg.get("role") == "user"]
     user_messages_count = len(user_messages)
     st.session_state.messages.append({"role": "user","Qno":user_messages_count, "content": prompt})
-    st.session_state["messages"][0]['role']="system"
+    da = st.session_state["messages"][0]['role']="system"
     last_prompt = []
     last_prompt.append(st.session_state["messages"][0])
     assist = [
@@ -409,7 +408,11 @@ def handle_chat_interaction(prompt):
                     }
                     for item in random_items
                 ]
-                card(product_details)
+                if product_details:
+                    card(product_details)
+                else:
+                    st.image(image="https://www.shyaway.com/media/wysiwyg/Sorry-no-results-found-350-x-350.jpg",width=360)
+                    st.markdown("No image found")
             else:
                 print("Unexpected response:", data)
         
