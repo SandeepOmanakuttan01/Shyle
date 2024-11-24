@@ -247,10 +247,10 @@ def display_chat_messages():
                 if "content" in message and message["content"]:
                     if "Qno" in message and message["Qno"]:
                          st.markdown(f"**Qno {message['Qno']}:** {message['content']}")
-			 if "product" in message and message["product"] is None:
-                             st.markdown("No image found")
                     else:
                         st.markdown(message["content"])
+                        if "product" in message and message["product"] is None:
+                             st.markdown("No image found")
 
                 if "usage" in message and message["usage"]:
                     usage = message["usage"]
@@ -264,6 +264,7 @@ def display_chat_messages():
                 if "product" in message and message["product"]:
                     product_details = message['product']
                     card(product_details=product_details)
+                   
 
 
 
