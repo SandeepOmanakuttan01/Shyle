@@ -302,6 +302,9 @@ Example: https://www.shyaway.com/bra-online/?fabric=nylon,cotton
 	7.	Bra Styles:
 bra-feature=backless, bridal, printed
 Example: https://www.shyaway.com/bra-online/?bra-feature=backless,printed
+    8.	Cup Shape:
+bra-cup-shape=plunge,full cup,balcony
+Example: https://www.shyaway.com/bra-online/?bra-cup-shape=plunge
 For example, combining multiple details:
 
 Input: size=32B,34C, color=Blue, fabric=Nylon
