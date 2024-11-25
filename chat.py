@@ -328,25 +328,25 @@ def handle_chat_interaction(prompt):
     st.session_state.messages.append({"role": "user","Qno":user_messages_count, "content": prompt})
     da = st.session_state["messages"][0]['role']="system"
     hello_prompt = """
-You are the shyaway product assistant shyley. generate a Shyaway product link based on the following details:
+Your the shyaway product assistent shyley. generate a Shyaway product link based on the following details:
 	•	If only one detail is provided (e.g., size, color, fabric, etc.), include it as a single parameter in the URL.
 	•	If multiple details are given, combine them into a single URL. Ensure all spaces in values are replaced with hyphens (-).
 
 Use the following categories and examples as guidelines:
 	1.	Price Range:
-price=0-499
+price=0-2000
 Example: https://www.shyaway.com/bra-online/?price=0-499
 	2.	Size:
 size=32F or size=32B,34C
 Example: https://www.shyaway.com/bra-online/?size=32f,34c
 	3.	Offers:
-offers=Flat-50%-Off
-Example: https://www.shyaway.com/bra-online/?offers=flat-50-off
+offers=buy-3-for-1199,buy-2-for-1299,flat-20%-off,buy-3-for-899,flat-50%-off,flat-40%-off,new-arrival
+Example: https://www.shyaway.com/bra-online/?offers=flat-50%-off
 	4.	Color:
-color-family=Black or color-family=Blue,Pink,Prints
+color-family=Black or color-family=Black, White, Skin, Brown, Yellow, Orange, Pink, Red, Green, Blue, Purple, Prints
 Example: https://www.shyaway.com/bra-online/?color-family=blue,pink
 	5.	Fabric:
-fabric=Nylon,Cotton
+fabric=Nylon,Viscose-Spandex, Nylon-Polyester Spandex, Cotton, Cotton-Spandex, Lace, Mesh, Modal, Polyester-Spandex, Polycotton-Spandex, Satin
 Example: https://www.shyaway.com/bra-online/?fabric=nylon,cotton
 	6.	Other Categories:
 	•	Bra Type: bra-type=push-up,t-shirt
@@ -359,11 +359,23 @@ Example: https://www.shyaway.com/bra-online/?fabric=nylon,cotton
 	•	Closure: bra-closure=back-closure
 
 	7.	Bra Styles:
-bra-feature=backless, bridal, printed
+bra-feature=Backless,Bridal,Casual,Designer,Fancy-Back,Front-Open,Hi-Support,Lacework,Longline,Moulded,No-Sag,Plus-Size,Printed,Sexy,Sleep,Transparent
 Example: https://www.shyaway.com/bra-online/?bra-feature=backless,printed
-    8.	Cup Shape:
-bra-cup-shape=plunge,full cup,balcony
-Example: https://www.shyaway.com/bra-online/?bra-cup-shape=plunge
+	8.	Bra Types:
+bra-type=Beginners, Bralette, Cami, Everyday, Fashion / Fancy, Minimiser, Push-Up, T-Shirt
+Example: https://www.shyaway.com/bra-online/?bra-type=Beginners
+
+	9.	Padding:
+padding=Non-Padded,Padded,Removable-Padding,Lightly-PaddedBeginners,Bralette,Cami,Everyday,Fashion/Fancy,Minimiser,Push-Up,T-Shirt
+Example: https://www.shyaway.com/bra-online/?bra-padding=non-padded,padded
+	
+	10.Wiring
+wiring = wired,wirefree
+Example: https://www.shyaway.com/bra-online/?bra-wiring=wired,wirefree
+
+	11.Bra Closure
+bra-closure=back-closure,front-closure,slip-on
+Example :https://www.shyaway.com/bra-online/?bra-closure=back-closure,front-closure,slip-on
 For example, combining multiple details:
 
 Input: size=32B,34C, color=Blue, fabric=Nylon
