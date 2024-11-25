@@ -273,68 +273,13 @@ def display_chat_messages():
 def initialize_hello_prompt():
     if not st.session_state.messages:
         hello_prompt = """
-You are the shyaway product assistant shyley. generate a Shyaway product link based on the following details:
+You're the shyaway product assistant shyley. generate a Shyaway product link based on the following details:
 	•	If only one detail is provided (e.g., size, color, fabric, etc.), include it as a single parameter in the URL.
 	•	If multiple details are given, combine them into a single URL. Ensure all spaces in values are replaced with hyphens (-).
 
 Use the following categories and examples as guidelines:
 	1.	Price Range:
-price=0-499
-Example: https://www.shyaway.com/bra-online/?price=0-499
-	2.	Size:
-size=32F or size=32B,34C
-Example: https://www.shyaway.com/bra-online/?size=32f,34c
-	3.	Offers:
-offers=Flat-50%-Off
-Example: https://www.shyaway.com/bra-online/?offers=flat-50-off
-	4.	Color:
-color-family=Black or color-family=Blue,Pink,Prints
-Example: https://www.shyaway.com/bra-online/?color-family=blue,pink
-	5.	Fabric:
-fabric=Nylon,Cotton
-Example: https://www.shyaway.com/bra-online/?fabric=nylon,cotton
-	6.	Other Categories:
-	•	Bra Type: bra-type=push-up,t-shirt
-	•	Bra Style: bra-feature=backless,bridal
-	•	Coverage: bra-coverage=full-coverage
-	•	Padding: bra-padding=lightly-padded
-	•	Wiring: bra-wiring=wired
-	•	Cup Shape: bra-cup-shape=balconette
-	•	Push-Up Level: bra-push-up-level=level-1
-	•	Closure: bra-closure=back-closure
-
-	7.	Bra Styles:
-bra-feature=backless, bridal, printed
-Example: https://www.shyaway.com/bra-online/?bra-feature=backless,printed
-    8.	Cup Shape:
-bra-cup-shape=plunge,full cup,balcony
-Example: https://www.shyaway.com/bra-online/?bra-cup-shape=plunge
-For example, combining multiple details:
-
-Input: size=32B,34C, color=Blue, fabric=Nylon
-
-Output:
-https://www.shyaway.com/bra-online/?size=32b,34c&color-family=blue&fabric=nylon
-
-If no relevant link is available, provide the default link:
-https://www.shyaway.com/bra-online/
-"""
-        st.session_state.messages.append({"role": "system", "content": hello_prompt})
-
-
-def handle_chat_interaction(prompt):
-    user_messages = [msg for msg in st.session_state.messages if msg.get("role") == "user"]
-    user_messages_count = len(user_messages)
-    st.session_state.messages.append({"role": "user","Qno":user_messages_count, "content": prompt})
-    da = st.session_state["messages"][0]['role']="system"
-    hello_prompt = """
-Your the shyaway product assistent shyley. generate a Shyaway product link based on the following details:
-	•	If only one detail is provided (e.g., size, color, fabric, etc.), include it as a single parameter in the URL.
-	•	If multiple details are given, combine them into a single URL. Ensure all spaces in values are replaced with hyphens (-).
-
-Use the following categories and examples as guidelines:
-	1.	Price Range:
-price=0-2000
+price=0 - 300,300 - 600,600 - 900,900 - 1,200,1,200 - 1,500,1,500 - 1,800
 Example: https://www.shyaway.com/bra-online/?price=0-499
 	2.	Size:
 size=32F or size=32B,34C
