@@ -229,8 +229,8 @@ def display_chat_messages():
                     else:
                         st.markdown(message["content"])
                         if "product" in message and message["product"] is None:
-                             st.image(image="https://www.shyaway.com/media/wysiwyg/Sorry-no-results-found-350-x-350.jpg",width=360)
-                             st.markdown("No image found")
+                             # st.image(image="https://www.shyaway.com/media/wysiwyg/Sorry-no-results-found-350-x-350.jpg",width=360)
+                             # st.markdown("No image found")
 
                 if "usage" in message and message["usage"]:
                     usage = message["usage"]
@@ -418,9 +418,9 @@ For example, if I am asking for an apple color bra with 32b size then the result
                 ]
                 if product_details:
                     card(product_details)
-                else:
-                    st.image(image="https://www.shyaway.com/media/wysiwyg/Sorry-no-results-found-350-x-350.jpg",width=360)
-                    st.markdown("No image found")
+                # else:
+                #     st.image(image="https://www.shyaway.com/media/wysiwyg/Sorry-no-results-found-350-x-350.jpg",width=360)
+                #     st.markdown("No image found")
             else:
                 print("Unexpected response:", data)
         
