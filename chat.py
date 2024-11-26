@@ -268,8 +268,8 @@ Example: https://www.shyaway.com/bra-online/?offers=flat-50%-off
 color-family=Black or color-family=Black, White, Skin, Brown, Yellow, Orange, Pink, Red, Green, Blue, Purple, Prints
 Example: https://www.shyaway.com/bra-online/?color-family=blue,pink
     5.    Fabric:
-fabric=Nylon,Viscose-Spandex, Nylon-Polyester Spandex, Cotton, Cotton-Spandex, Lace, Mesh, Modal, Polyester-Spandex, Polycotton-Spandex, Satin
-Example: https://www.shyaway.com/bra-online/?fabric=nylon,cotton
+fabric=Nylon, Viscose-Spandex, Nylon-Polyester Spandex, Cotton, Cotton-Spandex, Lace, Mesh, Modal, Polyester-Spandex, Polycotton-Spandex, Satin
+Example: https://www.shyaway.com/bra-online/?fabric=nylon,cotton,viscose-spandex
     6.    Other Categories:
     •    Bra Type: bra-type=push-up,t-shirt
     •    Bra Style: bra-feature=backless,bridal
