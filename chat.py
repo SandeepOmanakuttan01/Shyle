@@ -457,7 +457,11 @@ https://www.shyaway.com/bra-online/
                     }
                     for item in random_items
                 ]
-                card(product_details)
+                if product_details:
+                    card(product_details)
+                else:
+                    st.image(image="https://www.shyaway.com/media/wysiwyg/Sorry-no-results-found-350-x-350.jpg",width=360)
+                    st.markdown("No image found")
             else:
                 print("Unexpected response:", data)
         
