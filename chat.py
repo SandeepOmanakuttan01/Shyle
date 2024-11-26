@@ -341,36 +341,36 @@ I have listed out the category and other attributes and if a question is raised 
 For example, if I am asking for an apple color bra with 32b size then the result should be like category: bra, color:red, green,size:32b  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated
 """
     last_prompt.append({'role':"system",'content':hello_prompt})
-    assist = [
- {'role': 'user',
- 'content': 'hi'},
- {'role': 'assistant',
- 'content': "Hello! I'm Shyley,your Shyaway shopping assistant. How can I help you today? Whether you're looking for a specific type of lingerie,need sizing advice,or want to find the best deals,I'm here to assist you!",'product': None},
- {'role': 'user',
- 'content': 'hello'},
- {'role': 'assistant',
- 'content': "Hi there! How can I assist you today with your lingerie shopping? Whether you're searching for a particular style,size, or offer,I'm here to help!",'product': None},
- {'role': 'user',
- 'content': 'where i buy bra'},
- {'role': 'assistant',
- 'content': "You can buy a variety of bras online at Shyaway. Whether you're looking for specific sizes,styles,or colors,I can help you find exactly what you need. You can start browsing our collection here: [Shop Bras at Shyaway](https://www.shyaway.com/bra-online/). If you have specific preferences or need assistance,feel free to let me know!",
- },
- {'role': 'user',
- 'content': 'i want blue color padded bra it size 32c'},
- {'role': 'assistant',
- 'content': "Great choice! You can find a blue padded bra in size 32C at Shyaway. Here's a link to start browsing your preferred options: [Shop Blue Padded Bras in Size 32C](https://www.shyaway.com/bra-online/?color-family=blue&bra-padding=padded&size=32c). If there's anything else you need or have any specific preferences,feel free to ask!",
-},
- {'role': 'user',
- 'content': 'black bra'},
- {'role': 'assistant',
- 'content': "If you're looking for black bras,you can browse a wide range of styles and types at Shyaway. Whether you desire a padded,non-padded,or any specific style,there's likely an option for you. To explore black bras,you can visit this link: [Shop Black Bras](https://www.shyaway.com/bra-online/?color-family=black). Let me know if you have specific requirements or need further assistance!",},
- {'role': 'user',
- 'content': 'white color'},
- {'role': 'assistant',
- 'content': "If you're looking for white bras, Check out this link to find your perfect white bra: [Shop White Bras](https://www.shyaway.com/bra-online/?color-family=white). Let me know if you need help with anything else!",
- }]
+#     assist = [
+#  {'role': 'user',
+#  'content': 'hi'},
+#  {'role': 'assistant',
+#  'content': "Hello! I'm Shyley,your Shyaway shopping assistant. How can I help you today? Whether you're looking for a specific type of lingerie,need sizing advice,or want to find the best deals,I'm here to assist you!",'product': None},
+#  {'role': 'user',
+#  'content': 'hello'},
+#  {'role': 'assistant',
+#  'content': "Hi there! How can I assist you today with your lingerie shopping? Whether you're searching for a particular style,size, or offer,I'm here to help!",'product': None},
+#  {'role': 'user',
+#  'content': 'where i buy bra'},
+#  {'role': 'assistant',
+#  'content': "You can buy a variety of bras online at Shyaway. Whether you're looking for specific sizes,styles,or colors,I can help you find exactly what you need. You can start browsing our collection here: [Shop Bras at Shyaway](https://www.shyaway.com/bra-online/). If you have specific preferences or need assistance,feel free to let me know!",
+#  },
+#  {'role': 'user',
+#  'content': 'i want blue color padded bra it size 32c'},
+#  {'role': 'assistant',
+#  'content': "Great choice! You can find a blue padded bra in size 32C at Shyaway. Here's a link to start browsing your preferred options: [Shop Blue Padded Bras in Size 32C](https://www.shyaway.com/bra-online/?color-family=blue&bra-padding=padded&size=32c). If there's anything else you need or have any specific preferences,feel free to ask!",
+# },
+#  {'role': 'user',
+#  'content': 'black bra'},
+#  {'role': 'assistant',
+#  'content': "If you're looking for black bras,you can browse a wide range of styles and types at Shyaway. Whether you desire a padded,non-padded,or any specific style,there's likely an option for you. To explore black bras,you can visit this link: [Shop Black Bras](https://www.shyaway.com/bra-online/?color-family=black). Let me know if you have specific requirements or need further assistance!",},
+#  {'role': 'user',
+#  'content': 'white color'},
+#  {'role': 'assistant',
+#  'content': "If you're looking for white bras, Check out this link to find your perfect white bra: [Shop White Bras](https://www.shyaway.com/bra-online/?color-family=white). Let me know if you need help with anything else!",
+#  }]
 
-    last_prompt.extend(assist)
+#     last_prompt.extend(assist)
     last_prompt.append({"role": "user", "content": prompt})
 
     with st.chat_message("assistant", avatar=BOT_AVATAR):
