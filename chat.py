@@ -323,17 +323,16 @@ def handle_chat_interaction(prompt):
 
     last_prompt = []
     hello_prompt = """
-I want  answers related to shyaway.com alone
-category: bra, panty,nightwear, sleepwear,clothing, sportswear
+category: bra,p anty,nightwear, sleepwear,clothing,sportswear
 price=0-300,300 - 600,600-900,900-1200,1200-1500,1500-1800
 offers=buy-3-for-1199,buy-2-for-1299,flat-20%-off,buy-3-for-899,flat-50%-off,flat-40%-off,new-arrival
-color=Black, White, Skin, Brown, Yellow, Orange, Pink, Red, Green,Blue,Purple, Prints
+color=Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple|Prints
 fabric=Nylon, Viscose-Spandex, Nylon-Polyester Spandex, Cotton, Cotton-Spandex, Lace, Mesh, Modal, Polyester-Spandex, Polycotton-Spandex, Satin
 bra-type=Beginners, Bralette, Cami, Everyday, Fashion / Fancy, Minimiser, Push-Up, T-Shirt
-bra-feature=Backless,Bridal, Casual,Designer, Fancy-Back,Front-Open, Hi-Support,Lacework,Longline, Moulded,No-Sag, Plus-Size,Printed,Sexy ,Sleep, Transparent
-bra-coverage=full-coverage
-bra-padding=Non-Padded, Padded,Removable-Padding, Lightly-PaddedBeginners,Bralette,Cami, Everyday,Fashion/Fancy,Minimiser, Push-Up,T-Shirt
-bra-wiring=wired,wire-free
+bra-feature=Backless,Bridal,Casual,Designer,Fancy-Back,Front-Open,Hi-Support,Lacework,Longline,Moulded,No-Sag,Plus-Size,Printed,Sexy,Sleep,Transparent
+bra-coverage=full-coverage,3-4-th-Coverage,Demi-Coverage
+bra-padding=Non-Padded,Padded,Removable-Padding,Lightly-PaddedBeginners,Bralette,Cami,Everyday,Fashion/Fancy,Minimiser,Push-Up,T-Shirt
+bra-wiring=wired,wirefree
 bra-cup-shape=balconette
 bra-push-up-level=level-1,level-2,level-3
 bra-closure=back-closure,front-closure
