@@ -323,19 +323,19 @@ def handle_chat_interaction(prompt):
 
     last_prompt = []
     hello_prompt = """
-category: bra,p anty,nightwear, sleepwear,clothing,sportswear
+category : bra,panty,nightwear,sleepwear,clothing,sportwear
 price=0-300,300 - 600,600-900,900-1200,1200-1500,1500-1800
 offers=buy-3-for-1199,buy-2-for-1299,flat-20%-off,buy-3-for-899,flat-50%-off,flat-40%-off,new-arrival
-color=Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple|Prints
-fabric=Nylon, Viscose-Spandex, Nylon-Polyester Spandex, Cotton, Cotton-Spandex, Lace, Mesh, Modal, Polyester-Spandex, Polycotton-Spandex, Satin
-bra-type=Beginners, Bralette, Cami, Everyday, Fashion / Fancy, Minimiser, Push-Up, T-Shirt
+color=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints
+fabric=Nylon,Viscose-Spandex,Nylon-Polyester-Spandex,Cotton,Cotton-Spandex,Lace,Mesh,Modal,Polyester-Spandex,Polycotton-Spandex,Satin
+bra-type=Beginners,Bralette,Cami,Everyday,Fashion-Fancy,Minimiser,Push-Up,T-Shirt
 bra-feature=Backless,Bridal,Casual,Designer,Fancy-Back,Front-Open,Hi-Support,Lacework,Longline,Moulded,No-Sag,Plus-Size,Printed,Sexy,Sleep,Transparent
 bra-coverage=full-coverage,3-4-th-Coverage,Demi-Coverage
-bra-padding=Non-Padded,Padded,Removable-Padding,Lightly-PaddedBeginners,Bralette,Cami,Everyday,Fashion/Fancy,Minimiser,Push-Up,T-Shirt
+bra-padding=Non-Padded,Padded,Removable-Padding,Lightly-Padded
 bra-wiring=wired,wirefree
-bra-cup-shape=balconette
+bra-cup-shape=Balconette,Balcony,Full-Cup,Plunge,T-Shirt-Cup
 bra-push-up-level=level-1,level-2,level-3
-bra-closure=back-closure,front-closure
+bra-closure=back-closure,front-closure,slip-on
 brand=susie,taabu,shyle,shyaway
 I have listed out the category and other attributes and if a question is raised then i need to convert that as attributes and return that as output. Find the synonym,understanding the word to match attribute for each word and match with the attribute values and provide the result which should only match with the attribute or category I gave BY JUSTIFYING YOUR SUGGESTION
 For example, if I am asking for an apple color bra with 32b size then the result should be like category: bra, color:red, green,size:32b  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated
