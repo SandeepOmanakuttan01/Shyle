@@ -371,7 +371,73 @@ lingerieset_push_up_level=level-1,level-2,level-3
 lingerieset_type=everyday,t-shirt,nursing,maternity,bralette,camisole,minimisers,strapless,push-up,beginners,stick-on,cage-and-harness,fashion-fancy,tube-
 size=38D/XL,40B/XXL,40C/XXL,40D/XXL,32D/S,32 D/DD,34 D/DD,36 D/DD,38 D/DD'40 D/DD,42 D/DD,44 D/DD,46 D/DD,48 D/DD,50 D/DD,52 D/DD,54 D/DD,56 D/DD,58 D/DD,2XL/3XL,4XL/5XL
     i have listed out the category and other attributes and if a question is raised then i need to convert that as attributes and return that as output. Find the synonym,understanding the word to match attribute for each word and match with the attribute values and provide the result which should only match with the attribute or category I gave BY JUSTIFYING YOUR SUGGESTION
-    For example, if i am asking for an apple color bra with 32 D/DD size then the result should be like category: bra, color:red, green,size:xl  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated
+    For example, if i am asking for an apple color bra with 32 D/DD size then the result should be like category: bra, color:red, green,size:32 D/DD xl  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated
+        """
+    elif st.session_state.selected_tab == "nightwear":
+         hello_prompt ="""
+    i want  answers related to shyaway.com alone
+    category=nightwear
+nightwear_feature=intimate,loungewear,maternity,winter-sleepwear
+nightwear_type=babydoll-and-chemise,camisole-and-slip,tops,nightwear-sets,sleep-tee,sleepwear-bottoms,nightgowns,nightgown
+size=2xl,2xl-3xl,3xl,4xl,5xl,l,l-xl,m,s,s-m,xl,xs,xxl
+offers=buy-3-for-1199,buy-2-for-1299,flat-20%-off,buy-3-for-899,flat-50%-off,flat-40%-off,new-arrival
+    i have listed out the category and other attributes and if a question is raised then i need to convert that as attributes and return that as output. Find the synonym,understanding the word to match attribute for each word and match with the attribute values and provide the result which should only match with the attribute or category I gave BY JUSTIFYING YOUR SUGGESTION
+    For example, if i am asking for an apple color bra with 32b size then the result should be like category: bra, color:red, green,size:xl  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated
+        """
+    elif st.session_state.selected_tab == "sportswear":
+         hello_prompt ="""
+    i want  answers related to shyaway.com alone
+    category=sportswear
+sportswear_bra_coverage=high-coverage,medium-coverage,low-coverage
+sportswear_bra_impact_level=low-impact,medium-impact,hi-impact
+sportswear_bra_padding=padded,non-padded,removable-padding
+sportswear_bra_wiring=wired,wirefree
+sportswear_feature=racerback,cross-back,leggings,hoodies,seamless,classic-back,crop-top,jackets,shorts,t-back,t-shirt,joggers,skorts,tank
+sportswear_type=bra,bottoms,tops
+size=2xl,2xl-3xl,3xl,4xl,5xl,l,l-xl,m,s,s-m,xl,xs,xxl
+offers=buy-3-for-1199,buy-2-for-1299,flat-20%-off,buy-3-for-899,flat-50%-off,flat-40%-off,new-arrival
+    i have listed out the category and other attributes and if a question is raised then i need to convert that as attributes and return that as output. Find the synonym,understanding the word to match attribute for each word and match with the attribute values and provide the result which should only match with the attribute or category I gave BY JUSTIFYING YOUR SUGGESTION
+    For example, if i am asking for an apple color bra with 32b size then the result should be like category: bra, color:red, green,size:xl  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated
+        """
+         
+    elif st.session_state.selected_tab == "accessories":
+         hello_prompt ="""
+    i want  answers related to shyaway.com alone
+    category=accessories
+    accessories_type=bra-bag,bra-essentials,hosiery,masks,socks,boob-tape,adhesive-stick-on,silicone-nipple-pad,bra-extender
+brand=bloom,liberti-world,shyle,vanity-fair,jockey,lovable,enamor,cross-and-pearl,laavian,twin-birds,sonari,inner-sense,susie,amante,united-classic,shyaway,taabu,mybra,libra,nykd-by-nykaa,van-heusen
+color_family=grey,black,white,skin,brown,yellow,orange,pink,red,green,blue,purple,prints,multicolor,jacquard
+size=30A,FZ
+fabric=bamboo,cotton,cotton-spandex,denim-spandex,disposable,elastic,eva,lace,mesh,modal,nylon-spandex,polyester-spandex,polycotton-spandex,rayon,satin,silicone,viscose,polyamide-spandex,polyester,nylon,viscose-spandex,bamboo-cotton,nylon-polyester-spandex
+offers=flat-20%,new-arrival
+    i have listed out the category and other attributes and if a question is raised then i need to convert that as attributes and return that as output. Find the synonym,understanding the word to match attribute for each word and match with the attribute values and provide the result which should only match with the attribute or category I gave BY JUSTIFYING YOUR SUGGESTION
+    For example, if i am asking for an apple color bra with 32b size then the result should be like category: bra, color:red, green,size:xl  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated
+        """
+    elif st.session_state.selected_tab == "clothing":
+         hello_prompt ="""
+    i want  answers related to shyaway.com alone
+    category=clothing
+    clothing_type=Legwear,Scarves,Shrugs & Jackets,Tops
+size=2xl,2xl-3xl,3xl,4xl,5xl,l,l-xl,m,s,s-m,xl,xs,xxl
+brand=bloom,liberti-world,shyle,vanity-fair,jockey,lovable,enamor,cross-and-pearl,laavian,twin-birds,sonari,inner-sense,susie,amante,united-classic,shyaway,taabu,mybra,libra,nykd-by-nykaa,van-heusen
+color_family=grey,black,white,skin,brown,yellow,orange,pink,red,green,blue,purple,prints,multicolor,jacquard
+fabric=bamboo,cotton,cotton-spandex,denim-spandex,disposable,elastic,eva,lace,mesh,modal,nylon-spandex,polyester-spandex,polycotton-spandex,rayon,satin,silicone,viscose,polyamide-spandex,polyester,nylon,viscose-spandex,bamboo-cotton,nylon-polyester-spandex
+offers=new-arrival,flat-10%
+    i have listed out the category and other attributes and if a question is raised then i need to convert that as attributes and return that as output. Find the synonym,understanding the word to match attribute for each word and match with the attribute values and provide the result which should only match with the attribute or category I gave BY JUSTIFYING YOUR SUGGESTION
+    For example, if i am asking for an apple color bra with 32b size then the result should be like category: bra, color:red, green,size:xl  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated
+        """
+    elif st.session_state.selected_tab == "shapewear":
+         hello_prompt ="""
+    i want  answers related to shyaway.com alone
+    category=shapewear
+shapewear_type=Saree,Butt Shaper,Tummy Tucker,Body Shaper,Thigh Shaper,Torso Slimmer,Shaping Panty,Mid-Thigh Shaper,Compression Tights
+size=2xl,2xl-3xl,3xl,4xl,5xl,l,l-xl,m,s,s-m,xl,xs,xxl
+brand=bloom,liberti-world,shyle,vanity-fair,jockey,lovable,enamor,cross-and-pearl,laavian,twin-birds,sonari,inner-sense,susie,amante,united-classic,shyaway,taabu,mybra,libra,nykd-by-nykaa,van-heusen
+color_family=grey,black,white,skin,brown,yellow,orange,pink,red,green,blue,purple,prints,multicolor,jacquard
+fabric=bamboo,cotton,cotton-spandex,denim-spandex,disposable,elastic,eva,lace,mesh,modal,nylon-spandex,polyester-spandex,polycotton-spandex,rayon,satin,silicone,viscose,polyamide-spandex,polyester,nylon,viscose-spandex,bamboo-cotton,nylon-polyester-spandex
+offers=flat-20%
+    i have listed out the category and other attributes and if a question is raised then i need to convert that as attributes and return that as output. Find the synonym,understanding the word to match attribute for each word and match with the attribute values and provide the result which should only match with the attribute or category I gave BY JUSTIFYING YOUR SUGGESTION
+    For example, if i am asking for an apple color bra with 32b size then the result should be like category: bra, color:red, green,size:xl  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated
         """
     last_prompt.append({'role':"system",'content':hello_prompt})
 #     assist = [
@@ -522,8 +588,8 @@ def main():
         # Use radio buttons to select a tab inside the sidebar
         selected_tab = st.radio(
             "Choose a tab:",
-            options=["Bra", "Panty", "Lingerie Set"],
-            index=["Bra", "Panty", "Lingerie Set"].index(st.session_state.selected_tab),
+            options=["Bra", "Panty", "Lingerie Set","shapewear","clothing","accessories","sportswear","nightwear"],
+            index=["Bra", "Panty", "Lingerie Set","shapewear","clothing","accessories","sportswear","nightwear"].index(st.session_state.selected_tab),
             horizontal=False,  # Set to False to align vertically in the sidebar
             key="sidebar_radio"  # Unique key for sidebar radio
         )
@@ -542,6 +608,21 @@ def main():
         elif st.session_state.selected_tab == "Lingerie Set":
             st.subheader("Lingerie Set Section")
             st.write("Explore the latest in lingerie sets here!")
+        elif st.session_state.selected_tab == "shapewear":
+            st.subheader("Shapewear Section")
+            st.write("Explore the latest in Shapewear here!")
+        elif st.session_state.selected_tab == "clothing":
+            st.subheader("Clothing Section")
+            st.write("Explore the latest in Clothing here!")
+        elif st.session_state.selected_tab == "accessories":
+            st.subheader("Accessories Section")
+            st.write("Explore the latest in Accessories  here!")
+        elif st.session_state.selected_tab == "sportswear":
+            st.subheader("Sportswear Section")
+            st.write("Explore the latest in Sportswear  here!")
+        elif st.session_state.selected_tab == "nightwear":
+            st.subheader("Nightwear Section")
+            st.write("Explore the latest in Nightwear here!")
 
     # Display all chat messages
     display_chat_messages()
