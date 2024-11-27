@@ -316,7 +316,7 @@ def handle_chat_interaction(prompt):
     user_messages = [msg for msg in st.session_state.messages if msg.get("role") == "user"]
     user_messages_count = len(user_messages)
     
-    st.session_state.messages.append({"role": "user","Qno":user_messages_count, "content": prompt})
+    st.session_state.messages.append({"role": "user","Qno":user_messages_count, "content": prompt,"category":st.session_state.selected_tab})
     
     with st.chat_message("user", avatar=USER_AVATAR):
         st.markdown(f"**Qno {user_messages_count+1}:** {prompt}")
@@ -461,7 +461,8 @@ size=38D/XL,40B/XXL,40C/XXL,40D/XXL,32D/S,32 D/DD,34 D/DD,36 D/DD,38 D/DD'40 D/D
             "role": "assistant",
             "content": full_response,
             "product": product_details,
-            "usage":usage_info
+            "usage":usage_info,
+            "category":st.session_state.selected_tab
         })
 
     save_chat_history(st.session_state.messages)
