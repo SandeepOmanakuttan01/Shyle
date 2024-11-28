@@ -322,154 +322,112 @@ def handle_chat_interaction(prompt):
         st.markdown(f"**Qno {user_messages_count+1}:** {prompt}")
 
     last_prompt = []
-    if st.session_state.selected_tab == "Bra":
-        hello_prompt ="""
-    i want  answers related to shyaway.com alone
-    brand=bloom,liberti-world,shyle,vanity-fair,jockey,lovable,enamor,cross-and-pearl,laavian,twin-birds,sonari,inner-sense,susie,amante,united-classic,shyaway,taabu,mybra,libra,nykd-by-nykaa,van-heusen color_family=grey,black,white,skin,brown,yellow,orange,pink,red,green,blue,purple,prints,multicolor,jacquard fabric=bamboo,cotton,cotton-spandex,denim-spandex,disposable,elastic,eva,lace,mesh,modal,nylon-spandex,polyester-spandex,polycotton-spandex,rayon,satin,silicone,viscose,polyamide-spandex,polyester,nylon,viscose-spandex,bamboo-cotton,nylon-polyester-spandex offers=buy-2-for-349,buy-3-for-389,buy-2-for-499,buy-5-for-499,buy-3-for-499,buy-5-for-599,buy-3-for-599,buy-2-for-599,buy-3-for-888,buy-3-for-999,buy-2-for-1049,buy-3-for-1099,buy-2-for-1099,buy-5-for-1199,buy-3-for-1199,buy-6-for-1222,buy-2-for-1299,buy-2-for-1499,buy-2-for-1999,buy-2-for-2499,buy-2-get-2-free,buy-2-get-3-free,combo,flat-10,flat-20percent-off,flat-30,flat-40,buy-4-for-1299,buy-3-get-50percent-off,buy-5-get-60percent-off,buy-1-get-1-free,flat-50percent-off,buy-4-for-999,flat-rs.299,flat-40percent-off,buy-3-for-799,buy-5-for-999,pack-of-5,buy-3-for-899,new-arrival size=42d, 42dd, 44a, 44b, 44c, 44d, 44dd, 46b, 46c, 46d, 46dd, 48b, 48c, 48d, 40a, 40b, 40c, 40d, 40dd, 40z, 42a, 42b, 42c, 38a, 38b, 38c, 38d, 38dd, 38e, 38f, 34d-m, 34a, 34b, 34c, 34d, 34dd, 34e, 34z, 36a, 36b, 36c, 36d, 36dd, 36e, 36z, 30d, 30dd, 32a, 32b, 32c, 32d, 32dd, 36d-l, S, M, L, XL, XXL, 26b, 28b, 28c, 30a, 30b, 30c, 34c-m, 36-xl, 36b-l, 36c-l, 38-xxl, 38b-xl, 38c-xl, 38z, 40-xxxl, 40e, 42z, 44z, FZ, XS, XXXL, 32b-s, 32c-s, 34-l, 34b-m, 30b-s, 32d-m, XXXXL, 30e, 30f, 30g, 30h, 32e, 32f, 32g, 32h, 34f, 34g, 34h, 36f, 36g, 36h, 38g, 38h, 40f, 40g, 40h, 42e, 42f, 42g, 42h, 44e, 44f, 44g, 44h, 46e, 46f, 46g, 46h, 32ddd, 34ddd, 36ddd, 38ddd, 40ddd, 42ddd, 44ddd, 28d, 28dd, 28e, 28a, 28f, 28g, 3xl, 4xl, 46a, 48a, 48dd, 48e, 48f, 48g, 38d-xl, 40b-xxl, 40c-xxl, 40d-xxl, 32d-s, 5xl, 50b, 50c, 50d, 52b, 52c, 52d, 50a, 50dd, 50e, 50f, 50g, 52a, 52dd, 52e, 52f, 52g, 54a, 54b, 54c, 54d, 54dd, 54e, 54f, 54g, 56a, 56b, 56c, 56d, 56dd, 56e, 56f, 56g, 58a, 58b, 58c, 58d, 58dd, 58e, 58f, 58g, 32-ddd, 34-ddd, 36-ddd, 38-ddd, 40-ddd, 42-ddd, 44-ddd, 46-ddd, 48-ddd, 50-ddd, 52-ddd, 54-ddd, 56-ddd, 58-ddd, 2xs, 2xl, 6xl, sm, lxl, 2xl-3xl, 4xl-5xl, 32j, 34i, 34j, 36i, 36j, 38i, 38j, 40i, 40j, 28h, 28i, 28j, 30i, 30j, 32i, 42i, 42j, 44i, 44j, 46i, 46j, 48h, 48i, 48j, 50h, 50i, 50j, 52h, 52i, 52j accessories_type=bra-bag,bra-essentials,hosiery,masks,socks,boob-tape,adhesive-stick-on,silicone-nipple-pad,bra-extender bra_closure=back-closure,front-closure,side-closure,slip-on bra_coverage=3/4th-coverage,demi-coverage,full-coverage,no-coverage bra_cup_shape=plunge,balcony,balconette,full-cup,t-shirt-cup bra_feature=backless,bridal,casual,designer,fancy-back,front-open,hi-support,lacework,longline,moulded,no-sag,plus-size,printed,sexy,sleep,transparent bra_padding=padded,non-padded,removable-padding,lightly-padded bra_push_up_level=level-1,level-2,level-3 bra_seam=darted,seamed,seamless bra_straps=fully-adjustable,non-adjustable,back-adjustable,detachable,multiway,strap-free,front-adjustable,non-detachable,transparent-strap bra_type=everyday,t-shirt,nursing,maternity,bralette,camisole,minimiser,strapless,push-up,beginners,stick-on,cage-and-harness,fashion-fancy,tube bra_wiring=wired,wirefree lingerieset_bra_closure=back-closure,front-closure,side-closure,slip-on lingerieset_bra_coverage=demi-coverage,full-coverage,3/4th-coverage,no-coverage lingerieset_bra_cup_shape=balconette,balcony,full-cup,plunge,t-shirt-cup lingerieset_bra_padding=padded,non-padded,removable-padding lingerieset_bra_seam=seamless,seamed,darted lingerieset_bra_straps=back-adjustable,detachable,front-adjustable,fully-adjustable,multiway,non-adjustable,non-detachable,strap-free,transparent-strap lingerieset_bra_wiring=wired,wirefree lingerieset_feature=backless,bridal,casual,designer,fancy-back,front-open,hi-support,lacework,longline,moulded,no-sag,plus-size,printed,sexy,sleep,transparent lingerieset_panty_coverage=full-coverage,medium-coverage,no-coverage,low-coverage lingerieset_panty_feature=bridal,transparent,lacework,no-vpl,casual,sexy,seamless,printed,plus-size,maternity lingerieset_panty_type=bikini,boy-shorts,cheekini,hipster,period-panty,thong,tummy-tucker,packs,high-waist lingerieset_panty_waist_level=hi-impact,low-waist,medium-waist lingerieset_push_up_level=level-1,level-2,level-3 lingerieset_type=everyday,t-shirt,nursing,maternity,bralette,camisole,minimisers,strapless,push-up,beginners,stick-on,cage-and-harness,fashion-fancy,tube-bra nightwear_feature=intimate,loungewear,maternity,winter-sleepwear nightwear_type=babydoll-and-chemise,camisole-and-slip,tops,nightwear-sets,sleep-tee,sleepwear-bottoms,nightgowns,nightgown panty_coverage=full-coverage,medium-coverage,low-coverage,no-coverage panty_feature=bridal,transparent,lacework,no-vpl,casual,sexy,seamless,printed,plus-size,maternity panty_type=bikini,boy-shorts,cheekini,high-waist-brief,hipster,packs,period-panty,thong,tummy-tucker,cycling-shorts panty_waist_level=high-waist,medium-waist,low-waist sportswear_bra_coverage=high-coverage,medium-coverage,low-coverage sportswear_bra_impact_level=low-impact,medium-impact,hi-impact sportswear_bra_padding=padded,non-padded,removable-padding sportswear_bra_wiring=wired,wirefree sportswear_feature=racerback,cross-back,leggings,hoodies,seamless,classic-back,crop-top,jackets,shorts,t-back,t-shirt,joggers,skorts,tank sportswear_type=bra,bottoms,tops swimwear_feature=one-piece,two-piece swimwear_sleeve_length=3/4-sleeves,full-sleeves,short-sleeves,sleeveless swimwear_type=bikini,body-suit,frock-suit,sarong
-    i have listed out the category and other attributes and if a question is raised then i need to convert that as attributes and return that as output. Find the synonym,understanding the word to match attribute for each word and match with the attribute values and provide the result which should only match with the attribute or category I gave BY JUSTIFYING YOUR SUGGESTION
-    For example, if i am asking for an apple color bra with 32b size then the result should be like category: bra, color:red, green,size:32b  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated
-        """
-    elif st.session_state.selected_tab == "Panty":
-         hello_prompt ="""
-    i want  answers related to shyaway.com alone
-    category=Panty
-price=0-300,300-600,600-900,900-1200
-offers=buy-3-for-499,buy-3-for-599,flat-20%-off,flat-30,new-arrival
-brand=susie,taabu,shyle,shyaway
-color=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints,multicolor
-size=2xl,2xl-3xl,3xl,4xl,5xl,l,l-xl,m,s,s-m,xl,xs,xxl
-fabric=cotton-spandex,disposable,lace,mesh,modal,nylon,nylon-spandex,polycotton-spandex,polyester-spandex,viscose-spandex
-panty_type=bikini,boy-shorts,cycling-shorts,hipster,period-panty,thong,tummy-tucker
-panty_feature=bridal,casual,lacework,maternity,no-vpl,plus-size,printed,seamless,sexy,transparent
-panty_coverage=full-coverage,low-coverage,medium-coverage,no-coverage
-panty_waist-level=high-waist,low-waist,medium-waist
-    i have listed out the category and other attributes and if a question is raised then i need to convert that as attributes and return that as output. Find the synonym,understanding the word to match attribute for each word and match with the attribute values and provide the result which should only match with the attribute or category I gave BY JUSTIFYING YOUR SUGGESTION
-    For example, if i am asking for an apple color bra with 32b size then the result should be like category: bra, color:red, green,size:xl  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated
-        """
-         
-    elif st.session_state.selected_tab == "Lingerie Set":
-         hello_prompt ="""
+    category_prompts = {
+    "Bra": """
+    i want answers related to shyaway.com alone
+    category : Bra
+    price=0-300,300 - 600,600-900,900-1200,1200-1500,1500-1800
+    offers=buy-3-for-1199,buy-2-for-1299,flat-20%-off,buy-3-for-899,flat-50%-off,flat-40%-off,new-arrival
+    color-family=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints
+    fabric=Nylon,Viscose-Spandex,Nylon-Polyester-Spandex,Cotton,Cotton-Spandex,Lace,Mesh,Modal,Polyester-Spandex,Polycotton-Spandex,Satin
+    bra-type=Beginners,Bralette,Cami,Everyday,Fashion-Fancy,Minimiser,Push-Up,T-Shirt
+    bra-feature=Backless,Bridal,Casual,Designer,Fancy-Back,Front-Open,Hi-Support,Lacework,Longline,Moulded,No-Sag,Plus-Size,Printed,Sexy,Sleep,Transparent
+    bra-coverage=full-coverage,3-4-th-Coverage,Demi-Coverage
+    bra-padding=Non-Padded,Padded,Removable-Padding,Lightly-Padded
+    bra-wiring=wired,wirefree
+    bra-cup-shape=Balconette,Balcony,Full-Cup,Plunge,T-Shirt-Cup
+    bra-push-up-level=level-1,level-2,level-3
+    bra-closure=back-closure,front-closure,slip-on
+    brand=susie,taabu,shyle,shyaway
+    """,
+    "Panty": """
+    category : Panty
+    price=0-300,300-600,600-900,900-1200
+    offers=buy-3-for-499,buy-3-for-599,flat-20%-off,flat-30,new-arrival
+    brand=susie,taabu,shyle,shyaway
+    color=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints,multicolor
+    size=2xl,2xl-3xl,3xl,4xl,5xl,l,l-xl,m,s,s-m,xl,xs,xxl
+    fabric=cotton-spandex,disposable,lace,mesh,modal,nylon,nylon-spandex,polycotton-spandex,polyester-spandex,viscose-spandex
+    panty_type=bikini,boy-shorts,cycling-shorts,hipster,period-panty,thong,tummy-tucker
+    panty_feature=bridal,casual,lacework,maternity,no-vpl,plus-size,printed,seamless,sexy,transparent
+    panty_coverage=full-coverage,low-coverage,medium-coverage,no-coverage
+    panty_waist-level=high-waist,low-waist,medium-waist
+    """,
+    "nightwear": """
+    category : nightwear
+    nightwear_feature=intimate,loungewear,maternity,winter-sleepwear
+    nightwear_type=babydoll-and-chemise,camisole-and-slip,tops,nightwear-sets,sleep-tee,sleepwear-bottoms,nightgowns,nightgown
+    color-family=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints
+    size=2xl,2xl-3xl,3xl,4xl,5xl,l,l-xl,m,s,s-m,xl,xs,xxl
+    offers=buy-3-for-1199,buy-2-for-1299,flat-20%-off,buy-3-for-899,flat-50%-off,flat-40%-off,new-arrival
+    fabric=Bamboo,Cotton,Cotton Spandex,Lace,Mesh,Modal,Nylon Spandex,PolyesterSpandex,Satin,Viscose
+    """,
+    "shapewear": """
+    category : shapewear
+    shapewear_type=Saree,Butt Shaper,Tummy Tucker,Body Shaper,Thigh Shaper,Torso Slimmer,Shaping Panty,Mid-Thigh Shaper,Compression Tights
+    size=2xl,2xl-3xl,3xl,4xl,5xl,l,l-xl,m,s,s-m,xl,xs,xxl
+    brand=bloom,liberti-world,shyle,vanity-fair,jockey,lovable,enamor,cross-and-pearl,laavian,twin-birds,sonari,inner-sense,susie,amante,united-classic,shyaway,taabu,mybra,libra,nykd-by-nykaa,van-heusen
+    color_family=grey,black,white,skin,brown,yellow,orange,pink,red,green,blue,purple,prints,multicolor,jacquard
+    fabric=polyester-spandex,nylon-spandex,polycotton-spandex,viscose
+    offers=flat-20%-off
+    """,
+    "sportswear": """
+    category : sportswear
+    sportswear_bra_coverage=high-coverage,medium-coverage,low-coverage
+    sportswear_bra_impact_level=low-impact,medium-impact,hi-impact
+    sportswear_bra_padding=padded,non-padded,removable-padding
+    sportswear_bra_wiring=wired,wirefree
+    sportswear_feature=racerback,cross-back,leggings,hoodies,seamless,classic-back,crop-top,jackets,shorts,t-back,t-shirt,joggers,skorts,tank
+    sportswear_type=bra,bottoms,tops
+    size=2xl,2xl-3xl,3xl,4xl,5xl,l,l-xl,m,s,s-m,xl,xs,xxl
+    offers=buy-3-for-1199,buy-2-for-1299,flat-20%-off,buy-3-for-899,flat-50%-off,flat-40%-off,new-arrival
+    """,
+    "accessories":"""
+    category : accessories
+    accessories_type=bra-bag,bra-essentials,hosiery,masks,socks,boob-tape,adhesive-stick-on,silicone-nipple-pad,bra-extender
+    brand=shyle
+    color_family=grey,black,white,skin,brown,yellow,orange,pink,red,green,blue,purple,prints,multicolor,jacquard
+    fabric=cotton-spandex,elastic,eva,lace,mesh,nylon-spandex,polycotton-spandex,polyester-spandex,silicone
+    offers=flat-20%-off
+    """,
+    "clothing":"""
+    category : clothing
+    clothing_type=Legwear,Scarves,Shrugs & Jackets,Tops
+    size=2xl,2xl-3xl,3xl,4xl,5xl,l,l-xl,m,s,s-m,xl,xs,xxl
+    brand=shyle,united-classic
+    color_family=polyester,polyester-spandex,viscose
+    offers=flat-10
+    """,
+    "lingerie-set":"""
     i want  answers related to shyaway.com alone
     category:lingerie-set
-price=0-300,300-600,600-900,900-1200
-offers=buy-3-for-499,buy-3-for-599,flat-20%-off,flat-30,new-arrival
-brand=susie,taabu,shyle,shyaway
-color=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints,multicolor
-lingerieset_bra_closure=back-closure,front-closure,side-closure,slip-on
-lingerieset_bra_coverage=demi-coverage,full-coverage,3/4th-coverage,no-coverage
-lingerieset_bra_cup_shape=balconette,balcony,full-cup,plunge,t-shirt-cup
-lingerieset_bra_padding=padded,non-padded,removable-padding
-lingerieset_bra_seam=seamless,seamed,darted
-lingerieset_bra_straps=back-adjustable,detachable,front-adjustable,fully-adjustable,multiway,non-adjustable,non-detachable,strap-free,transparent-strap
-lingerieset_bra_wiring=wired,wirefree
-lingerieset_feature=backless,bridal,casual,designer,fancy-back,front-open,hi-support,lacework,longline,moulded,no-sag,plus-size,printed,sexy,sleep,transparent
-lingerieset_panty_coverage=full-coverage,medium-coverage,no-coverage,low-coverage
-lingerieset_panty_feature=bridal,transparent,lacework,no-vpl,casual,sexy,seamless,printed,plus-size,maternity
-lingerieset_panty_type=bikini,boy-shorts,cheekini,hipster,period-panty,thong,tummy-tucker,packs,high-waist
-lingerieset_panty_waist_level=hi-impact,low-waist,medium-waist
-lingerieset_push_up_level=level-1,level-2,level-3
-lingerieset_type=everyday,t-shirt,nursing,maternity,bralette,camisole,minimisers,strapless,push-up,beginners,stick-on,cage-and-harness,fashion-fancy,tube-
-size=38D/XL,40B/XXL,40C/XXL,40D/XXL,32D/S,32 D/DD,34 D/DD,36 D/DD,38 D/DD'40 D/DD,42 D/DD,44 D/DD,46 D/DD,48 D/DD,50 D/DD,52 D/DD,54 D/DD,56 D/DD,58 D/DD,2XL/3XL,4XL/5XL
-    i have listed out the category and other attributes and if a question is raised then i need to convert that as attributes and return that as output. Find the synonym,understanding the word to match attribute for each word and match with the attribute values and provide the result which should only match with the attribute or category I gave BY JUSTIFYING YOUR SUGGESTION
-    For example, if i am asking for an apple color bra with 32 D/DD size then the result should be like category: bra, color:red, green,size:32 D/DD xl  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated
-        """
-    elif st.session_state.selected_tab == "nightwear":
-         hello_prompt ="""
-    i want  answers related to shyaway.com alone
-    category=nightwear
-nightwear_feature=intimate,loungewear,maternity,winter-sleepwear
-nightwear_type=babydoll-and-chemise,camisole-and-slip,tops,nightwear-sets,sleep-tee,sleepwear-bottoms,nightgowns,nightgown
-size=2xl,2xl-3xl,3xl,4xl,5xl,l,l-xl,m,s,s-m,xl,xs,xxl
-offers=buy-3-for-1199,buy-2-for-1299,flat-20%-off,buy-3-for-899,flat-50%-off,flat-40%-off,new-arrival
-    i have listed out the category and other attributes and if a question is raised then i need to convert that as attributes and return that as output. Find the synonym,understanding the word to match attribute for each word and match with the attribute values and provide the result which should only match with the attribute or category I gave BY JUSTIFYING YOUR SUGGESTION
-    For example, if i am asking for an apple color bra with 32b size then the result should be like category: bra, color:red, green,size:xl  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated
-        """
-    elif st.session_state.selected_tab == "sportswear":
-         hello_prompt ="""
-    i want  answers related to shyaway.com alone
-    category=sportswear
-sportswear_bra_coverage=high-coverage,medium-coverage,low-coverage
-sportswear_bra_impact_level=low-impact,medium-impact,hi-impact
-sportswear_bra_padding=padded,non-padded,removable-padding
-sportswear_bra_wiring=wired,wirefree
-sportswear_feature=racerback,cross-back,leggings,hoodies,seamless,classic-back,crop-top,jackets,shorts,t-back,t-shirt,joggers,skorts,tank
-sportswear_type=bra,bottoms,tops
-size=2xl,2xl-3xl,3xl,4xl,5xl,l,l-xl,m,s,s-m,xl,xs,xxl
-offers=buy-3-for-1199,buy-2-for-1299,flat-20%-off,buy-3-for-899,flat-50%-off,flat-40%-off,new-arrival
-    i have listed out the category and other attributes and if a question is raised then i need to convert that as attributes and return that as output. Find the synonym,understanding the word to match attribute for each word and match with the attribute values and provide the result which should only match with the attribute or category I gave BY JUSTIFYING YOUR SUGGESTION
-    For example, if i am asking for an apple color bra with 32b size then the result should be like category: bra, color:red, green,size:xl  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated
-        """
-         
-    elif st.session_state.selected_tab == "accessories":
-         hello_prompt ="""
-    i want  answers related to shyaway.com alone
-    category=accessories
-    accessories_type=bra-bag,bra-essentials,hosiery,masks,socks,boob-tape,adhesive-stick-on,silicone-nipple-pad,bra-extender
-brand=bloom,liberti-world,shyle,vanity-fair,jockey,lovable,enamor,cross-and-pearl,laavian,twin-birds,sonari,inner-sense,susie,amante,united-classic,shyaway,taabu,mybra,libra,nykd-by-nykaa,van-heusen
-color_family=grey,black,white,skin,brown,yellow,orange,pink,red,green,blue,purple,prints,multicolor,jacquard
-size=30A,FZ
-fabric=bamboo,cotton,cotton-spandex,denim-spandex,disposable,elastic,eva,lace,mesh,modal,nylon-spandex,polyester-spandex,polycotton-spandex,rayon,satin,silicone,viscose,polyamide-spandex,polyester,nylon,viscose-spandex,bamboo-cotton,nylon-polyester-spandex
-offers=flat-20%,new-arrival
-    i have listed out the category and other attributes and if a question is raised then i need to convert that as attributes and return that as output. Find the synonym,understanding the word to match attribute for each word and match with the attribute values and provide the result which should only match with the attribute or category I gave BY JUSTIFYING YOUR SUGGESTION
-    For example, if i am asking for an apple color bra with 32b size then the result should be like category: bra, color:red, green,size:xl  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated
-        """
-    elif st.session_state.selected_tab == "clothing":
-         hello_prompt ="""
-    i want  answers related to shyaway.com alone
-    category=clothing
-    clothing_type=Legwear,Scarves,Shrugs & Jackets,Tops
-size=2xl,2xl-3xl,3xl,4xl,5xl,l,l-xl,m,s,s-m,xl,xs,xxl
-brand=bloom,liberti-world,shyle,vanity-fair,jockey,lovable,enamor,cross-and-pearl,laavian,twin-birds,sonari,inner-sense,susie,amante,united-classic,shyaway,taabu,mybra,libra,nykd-by-nykaa,van-heusen
-color_family=grey,black,white,skin,brown,yellow,orange,pink,red,green,blue,purple,prints,multicolor,jacquard
-fabric=bamboo,cotton,cotton-spandex,denim-spandex,disposable,elastic,eva,lace,mesh,modal,nylon-spandex,polyester-spandex,polycotton-spandex,rayon,satin,silicone,viscose,polyamide-spandex,polyester,nylon,viscose-spandex,bamboo-cotton,nylon-polyester-spandex
-offers=new-arrival,flat-10%
-    i have listed out the category and other attributes and if a question is raised then i need to convert that as attributes and return that as output. Find the synonym,understanding the word to match attribute for each word and match with the attribute values and provide the result which should only match with the attribute or category I gave BY JUSTIFYING YOUR SUGGESTION
-    For example, if i am asking for an apple color bra with 32b size then the result should be like category: bra, color:red, green,size:xl  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated
-        """
-    elif st.session_state.selected_tab == "shapewear":
-         hello_prompt ="""
-    i want  answers related to shyaway.com alone
-    category=shapewear
-shapewear_type=Saree,Butt Shaper,Tummy Tucker,Body Shaper,Thigh Shaper,Torso Slimmer,Shaping Panty,Mid-Thigh Shaper,Compression Tights
-size=2xl,2xl-3xl,3xl,4xl,5xl,l,l-xl,m,s,s-m,xl,xs,xxl
-brand=bloom,liberti-world,shyle,vanity-fair,jockey,lovable,enamor,cross-and-pearl,laavian,twin-birds,sonari,inner-sense,susie,amante,united-classic,shyaway,taabu,mybra,libra,nykd-by-nykaa,van-heusen
-color_family=grey,black,white,skin,brown,yellow,orange,pink,red,green,blue,purple,prints,multicolor,jacquard
-fabric=bamboo,cotton,cotton-spandex,denim-spandex,disposable,elastic,eva,lace,mesh,modal,nylon-spandex,polyester-spandex,polycotton-spandex,rayon,satin,silicone,viscose,polyamide-spandex,polyester,nylon,viscose-spandex,bamboo-cotton,nylon-polyester-spandex
-offers=flat-20%
-    i have listed out the category and other attributes and if a question is raised then i need to convert that as attributes and return that as output. Find the synonym,understanding the word to match attribute for each word and match with the attribute values and provide the result which should only match with the attribute or category I gave BY JUSTIFYING YOUR SUGGESTION
-    For example, if i am asking for an apple color bra with 32b size then the result should be like category: bra, color:red, green,size:xl  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated
-        """
-    last_prompt.append({'role':"system",'content':hello_prompt})
-#     assist = [
-#  {'role': 'user',
-#  'content': 'hi'},
-#  {'role': 'assistant',
-#  'content': "Hello! I'm Shyley,your Shyaway shopping assistant. How can I help you today? Whether you're looking for a specific type of lingerie,need sizing advice,or want to find the best deals,I'm here to assist you!",'product': None},
-#  {'role': 'user',
-#  'content': 'hello'},
-#  {'role': 'assistant',
-#  'content': "Hi there! How can I assist you today with your lingerie shopping? Whether you're searching for a particular style,size, or offer,I'm here to help!",'product': None},
-#  {'role': 'user',
-#  'content': 'where i buy bra'},
-#  {'role': 'assistant',
-#  'content': "You can buy a variety of bras online at Shyaway. Whether you're looking for specific sizes,styles,or colors,I can help you find exactly what you need. You can start browsing our collection here: [Shop Bras at Shyaway](https://www.shyaway.com/bra-online/). If you have specific preferences or need assistance,feel free to let me know!",
-#  },
-#  {'role': 'user',
-#  'content': 'i want blue color padded bra it size 32c'},
-#  {'role': 'assistant',
-#  'content': "Great choice! You can find a blue padded bra in size 32C at Shyaway. Here's a link to start browsing your preferred options: [Shop Blue Padded Bras in Size 32C](https://www.shyaway.com/bra-online/?color-family=blue&bra-padding=padded&size=32c). If there's anything else you need or have any specific preferences,feel free to ask!",
-# },
-#  {'role': 'user',
-#  'content': 'black bra'},
-#  {'role': 'assistant',
-#  'content': "If you're looking for black bras,you can browse a wide range of styles and types at Shyaway. Whether you desire a padded,non-padded,or any specific style,there's likely an option for you. To explore black bras,you can visit this link: [Shop Black Bras](https://www.shyaway.com/bra-online/?color-family=black). Let me know if you have specific requirements or need further assistance!",},
-#  {'role': 'user',
-#  'content': 'white color'},
-#  {'role': 'assistant',
-#  'content': "If you're looking for white bras, Check out this link to find your perfect white bra: [Shop White Bras](https://www.shyaway.com/bra-online/?color-family=white). Let me know if you need help with anything else!",
-#  }]
-
-#     last_prompt.extend(assist)
+    price=0-300,300-600,600-900,900-1200
+    offers=buy-3-for-499,buy-3-for-599,flat-20%-off,flat-30,new-arrival
+    brand=susie,taabu,shyle,shyaway
+    color-family=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints,multicolor
+    lingerieset_bra_closure=back-closure,front-closure,side-closure,slip-on
+    lingerieset_bra_coverage=demi-coverage,full-coverage,3/4th-coverage,no-coverage
+    lingerieset_bra_cup_shape=balconette,balcony,full-cup,plunge,t-shirt-cup
+    lingerieset_bra_padding=padded,non-padded,removable-padding
+    lingerieset_bra_seam=seamless,seamed,darted
+    lingerieset_bra_straps=back-adjustable,detachable,front-adjustable,fully-adjustable,multiway,non-adjustable,non-detachable,strap-free,transparent-strap
+    lingerieset_bra_wiring=wired,wirefree
+    lingerieset_feature=backless,bridal,casual,designer,fancy-back,front-open,hi-support,lacework,longline,moulded,no-sag,plus-size,printed,sexy,sleep,transparent
+    lingerieset_panty_coverage=full-coverage,medium-coverage,no-coverage,low-coverage
+    lingerieset_panty_feature=bridal,transparent,lacework,no-vpl,casual,sexy,seamless,printed,plus-size,maternity
+    lingerieset_panty_type=bikini,boy-shorts,cheekini,hipster,period-panty,thong,tummy-tucker,packs,high-waist
+    lingerieset_panty_waist_level=hi-impact,low-waist,medium-waist
+    lingerieset_push_up_level=level-1,level-2,level-3
+    lingerieset_type=everyday,t-shirt,nursing,maternity,bralette,camisole,minimisers,strapless,push-up,beginners,stick-on,cage-and-harness,fashion-fancy,tube-
+    size=38D/XL,40B/XXL,40C/XXL,40D/XXL,32D/S,32 D/DD,34 D/DD,36 D/DD,38 D/DD'40 D/DD,42 D/DD,44 D/DD,46 D/DD,48 D/DD,50 D/DD,52 D/DD,54 D/DD,56 D/DD,58 D/DD,2XL/3XL,4XL/5XL
+    """   
+}
+    common = f"""i have listed out the category and other attributes and if a question is raised then i need to convert that as attributes and return that as output. Find the synonym,understanding the word to match attribute for each word and match with the attribute values and provide the result which should only match with the attribute or category I gave BY JUSTIFYING YOUR SUGGESTION
+    For example, if i am asking for an apple color bra with 32b size then the result should be like category: {category.lower()},[here]url:https://www.shyaway.com/{category.lower()}-online/?color-family=red,green,size:xl  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated"""
+     # Get the specific hello_prompt based on the selected_tab
+    hello_prompt = f"{category_prompts.get(st.session_state.selected_tab, "")}{common}"
+    
+    last_prompt.append({"role":"system","content":hello_prompt})
     last_prompt.append({"role": "user", "content": prompt})
 
     with st.chat_message("assistant", avatar=BOT_AVATAR):
