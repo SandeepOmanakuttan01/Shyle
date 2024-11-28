@@ -274,107 +274,121 @@ def handle_chat_interaction(prompt):
     last_prompt = []
     category_prompts = {
     "Bra": """
-    i want answers related to shyaway.com alone
-    category : Bra
-    price=0-300,300 - 600,600-900,900-1200,1200-1500,1500-1800
-    offers=buy-3-for-1199,buy-2-for-1299,flat-20%-off,buy-3-for-899,flat-50%-off,flat-40%-off,new-arrival
-    color-family=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints
-    fabric=Nylon,Viscose-Spandex,Nylon-Polyester-Spandex,Cotton,Cotton-Spandex,Lace,Mesh,Modal,Polyester-Spandex,Polycotton-Spandex,Satin
-    bra-type=Beginners,Bralette,Cami,Everyday,Fashion-Fancy,Minimiser,Push-Up,T-Shirt
-    bra-feature=Backless,Bridal,Casual,Designer,Fancy-Back,Front-Open,Hi-Support,Lacework,Longline,Moulded,No-Sag,Plus-Size,Printed,Sexy,Sleep,Transparent
-    bra-coverage=full-coverage,3-4-th-Coverage,Demi-Coverage
-    bra-padding=Non-Padded,Padded,Removable-Padding,Lightly-Padded
-    bra-wiring=wired,wirefree
-    bra-cup-shape=Balconette,Balcony,Full-Cup,Plunge,T-Shirt-Cup
-    bra-push-up-level=level-1,level-2,level-3
-    bra-closure=back-closure,front-closure,slip-on
-    brand=susie,taabu,shyle,shyaway
+   i want answers related to shyaway.com alone
+   category : Bra
+   offers=buy-3-for-1199,buy-2-for-1299,flat-20%-off,buy-3-for-899,flat-50%-off,flat-40%-off,new-arrival
+   color-family=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints
+   fabric=Nylon,Viscose-Spandex,Nylon-Polyester-Spandex,Cotton,Cotton-Spandex,Lace,Mesh,Modal,Polyester-Spandex,Polycotton-Spandex,Satin
+   bra-type=Beginners,Bralette,Cami,Everyday,Fashion-Fancy,Minimiser,Push-Up,T-Shirt
+   bra-feature=Backless,Bridal,Casual,Designer,Fancy-Back,Front-Open,Hi-Support,Lacework,Longline,Moulded,No-Sag,Plus-Size,Printed,Sexy,Sleep,Transparent
+   bra-coverage=full-coverage,3-4-th-Coverage,Demi-Coverage
+   bra-padding=Non-Padded,Padded,Removable-Padding,Lightly-Padded
+   bra-wiring=wired,wirefree
+   bra-cup-shape=Balconette,Balcony,Full-Cup,Plunge,T-Shirt-Cup
+   bra-push-up-level=level-1,level-2,level-3
+   bra-closure=back-closure,front-closure,slip-on
+   brand=susie,taabu,shyle,shyaway
+   size=28:(D,DD,E),30:(A,B,C,D,DD,E),32:(A,B,C,D,DD,E,F,G,H,I,J),34:(A,B,C,D,DD,E,F,G,H,I,J),36:(A,B,C,D,DD,E,F,G,H,I,J),38:(A,B,C,D,DD,E,F,G,H,I),40:(B,C,D,DD,E,F,G,H,I,J),42:(B,C,D,E,F,G),44:(B,C,D,E,F,G),46:(B,C,D),48:(B,C,D),50:(B,C,D),52:(B,C,D)
+   price=0-300,1200-1500,1500-1800,300-600,600-900,900-1200
     """,
     "Panty": """
-    category : Panty
-    price=0-300,300-600,600-900,900-1200
-    offers=buy-3-for-499,buy-3-for-599,flat-20%-off,flat-30,new-arrival
-    brand=susie,taabu,shyle,shyaway
-    color=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints,multicolor
-    size=2xl,2xl-3xl,3xl,4xl,5xl,l,l-xl,m,s,s-m,xl,xs,xxl
-    fabric=cotton-spandex,disposable,lace,mesh,modal,nylon,nylon-spandex,polycotton-spandex,polyester-spandex,viscose-spandex
-    panty_type=bikini,boy-shorts,cycling-shorts,hipster,period-panty,thong,tummy-tucker
-    panty_feature=bridal,casual,lacework,maternity,no-vpl,plus-size,printed,seamless,sexy,transparent
-    panty_coverage=full-coverage,low-coverage,medium-coverage,no-coverage
-    panty_waist-level=high-waist,low-waist,medium-waist
-    """,
-    "sleepwear": """
-    category : sleepwear
-    nightwear_feature=intimate,loungewear,maternity,winter-sleepwear
-    nightwear_type=babydoll-and-chemise,camisole-and-slip,tops,nightwear-sets,sleep-tee,sleepwear-bottoms,nightgowns,nightgown
-    color-family=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints
-    size=2xl,2xl-3xl,3xl,4xl,5xl,l,l-xl,m,s,s-m,xl,xs,xxl
-    offers=buy-3-for-1199,buy-2-for-1299,flat-20%-off,buy-3-for-899,flat-50%-off,flat-40%-off,new-arrival
-    fabric=Bamboo,Cotton,Cotton Spandex,Lace,Mesh,Modal,Nylon Spandex,PolyesterSpandex,Satin,Viscose
-    """,
-    "shapewear": """
-    category : shapewear
-    shapewear_type=Saree,Butt Shaper,Tummy Tucker,Body Shaper,Thigh Shaper,Torso Slimmer,Shaping Panty,Mid-Thigh Shaper,Compression Tights
-    size=2xl,2xl-3xl,3xl,4xl,5xl,l,l-xl,m,s,s-m,xl,xs,xxl
-    brand=bloom,liberti-world,shyle,vanity-fair,jockey,lovable,enamor,cross-and-pearl,laavian,twin-birds,sonari,inner-sense,susie,amante,united-classic,shyaway,taabu,mybra,libra,nykd-by-nykaa,van-heusen
-    color_family=grey,black,white,skin,brown,yellow,orange,pink,red,green,blue,purple,prints,multicolor,jacquard
-    fabric=polyester-spandex,nylon-spandex,polycotton-spandex,viscose
-    offers=flat-20%-off
-    """,
-    "sportswear": """
-    category : sportswear
-    sportswear_bra_coverage=high-coverage,medium-coverage,low-coverage
-    sportswear_bra_impact_level=low-impact,medium-impact,hi-impact
-    sportswear_bra_padding=padded,non-padded,removable-padding
-    sportswear_bra_wiring=wired,wirefree
-    sportswear_feature=racerback,cross-back,leggings,hoodies,seamless,classic-back,crop-top,jackets,shorts,t-back,t-shirt,joggers,skorts,tank
-    sportswear_type=bra,bottoms,tops
-    size=2xl,2xl-3xl,3xl,4xl,5xl,l,l-xl,m,s,s-m,xl,xs,xxl
-    offers=buy-3-for-1199,buy-2-for-1299,flat-20%-off,buy-3-for-899,flat-50%-off,flat-40%-off,new-arrival
-    """,
-    "accessories":"""
-    category : accessories
-    accessories_type=bra-bag,bra-essentials,hosiery,masks,socks,boob-tape,adhesive-stick-on,silicone-nipple-pad,bra-extender
-    brand=shyle
-    color_family=grey,black,white,skin,brown,yellow,orange,pink,red,green,blue,purple,prints,multicolor,jacquard
-    fabric=cotton-spandex,elastic,eva,lace,mesh,nylon-spandex,polycotton-spandex,polyester-spandex,silicone
-    offers=flat-20%-off
-    """,
-    "clothing":"""
-    category : clothing
-    clothing_type=Legwear,Scarves,Shrugs & Jackets,Tops
-    size=2xl,2xl-3xl,3xl,4xl,5xl,l,l-xl,m,s,s-m,xl,xs,xxl
-    brand=shyle,united-classic
-    color_family=polyester,polyester-spandex,viscose
-    offers=flat-10
+   price=0-300,300-600,600-900,900-1200
+   category : Panty
+   offers=buy-3-for-499,buy-3-for-599,flat-20%-off,flat-30,new-arrival
+   brand=susie,taabu,shyle,shyaway
+   color-family=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints,multicolor
+   size=2xl,2xl-3xl,3xl,4xl,5xl,l,l-xl,m,s,s-m,xl,xs,xxl
+   fabric=cotton-spandex,disposable,lace,mesh,modal,nylon,nylon-spandex,polycotton-spandex,polyester-spandex,viscose-spandex
+   panty-type=bikini,boy-shorts,cycling-shorts,hipster,period-panty,thong,tummy-tucker
+   panty-feature=bridal,casual,lacework,maternity,no-vpl,plus-size,printed,seamless,sexy,transparent
+   panty-coverage=full-coverage,low-coverage,medium-coverage,no-coverage
+   panty-waist-level=high-waist,low-waist,medium-waist
     """,
     "lingerie-set":"""
     i want  answers related to shyaway.com alone
-    category:lingerie-set
-    price=0-300,300-600,600-900,900-1200
-    offers=buy-3-for-499,buy-3-for-599,flat-20%-off,flat-30,new-arrival
-    brand=susie,taabu,shyle,shyaway
-    color-family=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints,multicolor
-    lingerieset_bra_closure=back-closure,front-closure,side-closure,slip-on
-    lingerieset_bra_coverage=demi-coverage,full-coverage,3/4th-coverage,no-coverage
-    lingerieset_bra_cup_shape=balconette,balcony,full-cup,plunge,t-shirt-cup
-    lingerieset_bra_padding=padded,non-padded,removable-padding
-    lingerieset_bra_seam=seamless,seamed,darted
-    lingerieset_bra_straps=back-adjustable,detachable,front-adjustable,fully-adjustable,multiway,non-adjustable,non-detachable,strap-free,transparent-strap
-    lingerieset_bra_wiring=wired,wirefree
-    lingerieset_feature=backless,bridal,casual,designer,fancy-back,front-open,hi-support,lacework,longline,moulded,no-sag,plus-size,printed,sexy,sleep,transparent
-    lingerieset_panty_coverage=full-coverage,medium-coverage,no-coverage,low-coverage
-    lingerieset_panty_feature=bridal,transparent,lacework,no-vpl,casual,sexy,seamless,printed,plus-size,maternity
-    lingerieset_panty_type=bikini,boy-shorts,cheekini,hipster,period-panty,thong,tummy-tucker,packs,high-waist
-    lingerieset_panty_waist_level=hi-impact,low-waist,medium-waist
-    lingerieset_push_up_level=level-1,level-2,level-3
-    lingerieset_type=everyday,t-shirt,nursing,maternity,bralette,camisole,minimisers,strapless,push-up,beginners,stick-on,cage-and-harness,fashion-fancy,tube-
-    size=38D/XL,40B/XXL,40C/XXL,40D/XXL,32D/S,32 D/DD,34 D/DD,36 D/DD,38 D/DD'40 D/DD,42 D/DD,44 D/DD,46 D/DD,48 D/DD,50 D/DD,52 D/DD,54 D/DD,56 D/DD,58 D/DD,2XL/3XL,4XL/5XL
-    """   
+    category : lingerie-set
+   offers=buy-3-for-499,buy-3-for-599,flat-20%-off,flat-30,new-arrival
+   size=38D/XL,40B/XXL,40C/XXL,40D/XXL,32D/S,32 D/DD,34 D/DD,36 D/DD,38 D/DD'40 D/DD,42 D/DD,44 D/DD,46 D/DD,48 D/DD,50 D/DD,52 D/DD,54 D/DD,56 D/DD,58 D/DD,2XL/3XL,4XL/5XL
+   brand=susie,taabu,shyle
+   color-family=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints,multicolor
+   fabric=cotton-spandex,lace,mesh,nylon-spandex
+   lingerieset-type=everyday,fashion-fancy-bra,push-up,t-shirt
+   lingerieset-panty-type=bikini,hipster,thong
+   lingerieset-feature=bridal,casual,hi-support,lacework,moulded,no-sag,printed,sexy,Transparent
+   lingerieset-panty-feature=bridal,transparent,lacework,,casual,sexy,printed
+   lingerieset-bra-closure=back-closure,front-closure,side-closure,slip-on
+   lingerieset-bra-coverage=demi-coverage,full-coverage,3/4th-coverage
+   lingerieset-panty-coverage=full-coverage,medium-coverage,no-coverage,low-coverage
+   lingerieset-bra-padding=padded,non-padded
+   lingerieset-bra-wiring=wired,wirefree
+   lingerieset-panty-waist-level=hi-impact,low-waist,medium-waist
+   lingerieset-bra-seam=seamless,seamed,darted
+   lingerieset-bra-cup-shape=balconette,balcony,full-cup,plunge,t-shirt-cup
+   lingerieset-push-up-level=level-2,level-3
+   lingerieset-bra-straps=back-adjustable,detachable,front-adjustable,fully-adjustable,multiway,non-detachable
+   price=0-300,1200-1500,1500-1800,300-600,600-900,900-1200
+    """,
+    "sportswear": """
+    category : sportswear
+   offers=flat-20%-off
+   size=xs,s,m,l,xl,2xl,3xl,XXL,XXXL
+   brand=shyaway,shyle,united-classic,van-heusen
+   color-family=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints,multicolor
+   sportswear-type=bra,bottoms,tops
+   sportswear-feature=racerback,cross-back,leggings,hoodies,seamless,classic-back,crop-top,jackets,shorts,t-back,t-shirt,joggers,skorts,tank
+   sportswear-bra-coverage=high-coverage,medium-coverage,low-coverage
+   sportswear-bra-impact_level=low-impact,medium-impact,hi-impact
+   sportswear-bra-padding=padded,removable-padding
+   sportswear-bra-wiring=wirefree
+   price=0-300,1200-1500,1500-1800,300-600,600-900,900-1200
+    """,  
+    "sleepwear": """
+    category : sleepwear
+   fabric=bamboo,cotton,cotton-spandex,lace,mesh,modal,nylon-spandex,polyester-spandex,satin,viscose
+   nightwear-feature=intimate,loungewear,maternity,winter-sleepwear
+   nightwear-type=babydoll-and-chemise,camisole-and-slip,tops,nightwear-sets,sleep-tee,sleepwear-bottoms,nightgowns,tops
+   color-family=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints,multicolor
+   size=xs,s,m,l,xl,2xl,3xl,4xl,5xl
+   offers=buy-2-for-599,flat-20%-off
+   price=0-300,1200-1500,1500-1800,300-600,600-900,900-1200
+    """,
+    "shapewear": """
+    category : shapewear
+   shapewear_type=Saree,Butt Shaper,Tummy Tucker,Body Shaper,Thigh Shaper,Torso Slimmer,Shaping Panty,Mid-Thigh Shaper,Compression Tights
+   size=xs,s,m,l,xl,2xl,3xl,4xl,5xl
+   brand=mybra,shyle,united-classic
+   color-family=grey,black,white,skin,brown,yellow,orange,pink,red,green,blue,purple,prints,multicolor,jacquard
+   fabric=nylon-spandex,polycotton-spandex,polyester-spandex,viscose
+   offers=flat-20%-off
+   price=0-300,1200-1500,1500-1800,300-600,600-900,900-1200
+    """,
+    "accessories":"""
+    category : accessories
+   accessories-type=bra-bag,bra-essentials,hosiery,masks,socks,boob-tape,adhesive-stick-on,silicone-nipple-pad,bra-extender
+   brand=shyle
+   color-family=grey,black,white,skin,brown,yellow,orange,pink,red,green,blue,purple,prints,multicolor,jacquard
+   fabric=cotton-spandex,elastic,eva,lace,mesh,nylon-spandex,polycotton-spandex,polyester-spandex,silicone
+   offers=flat-20%-off
+   price=0-300,1200-1500,1500-1800,300-600,600-900,900-1200
+    """,
+    "clothing":"""
+    category : clothing
+   clothing-type=Legwear,Scarves,Shrugs & Jackets,Tops
+   size=FZ
+   brand=shyle
+   fabric=cotton-spandex,disposable,elastic,eva,lace,mesh,nylon-spandex,polycotton-spandex,polyester-spandex,silicone
+   color-family=black,blue,brown,green,multicolor,orange,pink,prints,red,skin,white,yellow
+   offers=flat-10
+   price=0-300,1200-1500,1500-1800,300-600,600-900,900-1200
+    """,
+    
 }
-    common = f"""i have listed out the category and other attributes and if a question is raised then i need to convert that as attributes and return that as output. Find the synonym,understanding the word to match attribute for each word and match with the attribute values and provide the result which should only match with the attribute or category I gave BY JUSTIFYING YOUR SUGGESTION
-    For example, if i am asking for an apple color bra with 32b size then the result should be like category: {category.lower()},[here]url:https://www.shyaway.com/{category.lower()}-online/?color-family=red,green,size:xl  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated"""
-     # Get the specific hello_prompt based on the selected_tab
+    common=f"""
+i have provided attributes and attribute values for each category if a question is raised then i need to convert that as attributes and return as output. Find the synonym,understanding the word to match attribute for each word and match with the attribute values and provide the result which should only match with the attribute or category I gave. For example, if i am asking for an apple color bra with 32b size then the result should be like category: {category.lower()},[here]url:https://www.shyaway.com/{category.lower()}-online/?color-family=red,green,size:xl  and if there are more than one attribute value mention that as comma seperated please note that if we have one category then those attribute and attribute values has to be considered like if the question is related to bra then we should consider only those attributes and the common attributes can be used for all categories but dont deviate other than the attribute values i gave
+"""
+    # common = f"""i have listed out the category and other attributes and if a question is raised then i need to convert that as attributes and return that as output. Find the synonym,understanding the word to match attribute for each word and match with the attribute values and provide the result which should only match with the attribute or category I gave BY JUSTIFYING YOUR SUGGESTION
+    # For example, if i am asking for an apple color bra with 32b size then the result should be like category: {category.lower()},[here]url:https://www.shyaway.com/{category.lower()}-online/?color-family=red,green,size:xl  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated"""
+    #  # Get the specific hello_prompt based on the selected_tab
     hello_prompt = f"{category_prompts.get(st.session_state.selected_tab, "")}{common}"
 
     print(hello_prompt)
