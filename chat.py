@@ -4,7 +4,7 @@ import re
 from openai import OpenAI
 import streamlit as st
 import os
-from urllib.parse import urlparse
+# from urllib.parse import urlparse
 import shelve
 import requests
 import random
@@ -108,26 +108,26 @@ def save_chat_history(messages):
         db["messages"] = messages
 
 
-def extract_query_parameters(content):
-    """
-    Extracts the query parameters from a plain URL in the given text content.
+# def extract_query_parameters(content):
+#     """
+#     Extracts the query parameters from a plain URL in the given text content.
 
-    Args:
-        content (str): Text content containing a URL.
+#     Args:
+#         content (str): Text content containing a URL.
 
-    Returns:
-        str: Extracted query parameters or None if no URL or query is found.
-    """
-    # Regular expression to match a plain URL
-    url_pattern = r'https?://[^\s]+'
-    match = re.search(url_pattern, content)
-    if match:
-        full_url = match.group(0)
-        # Parse the URL to get query parameters
-        parsed_url = urlparse(full_url)
-        relative_url = f"{parsed_url.path}?{parsed_url.query}" if parsed_url.query else parsed_url.path
-        return relative_url
-    return None
+#     Returns:
+#         str: Extracted query parameters or None if no URL or query is found.
+#     """
+#     # Regular expression to match a plain URL
+#     url_pattern = r'https?://[^\s]+'
+#     match = re.search(url_pattern, content)
+#     if match:
+#         full_url = match.group(0)
+#         # Parse the URL to get query parameters
+#         parsed_url = urlparse(full_url)
+#         relative_url = f"{parsed_url.path}?{parsed_url.query}" if parsed_url.query else parsed_url.path
+#         return relative_url
+#     return None
 
 def extract_relative_url(content):
     """
@@ -414,8 +414,8 @@ def handle_chat_interaction(prompt):
         
         # Process the URL key
         url_key = extract_relative_url(full_response)
-        if url_key is None:
-            url_key = extract_query_parameters(full_response)
+        # if url_key is None:
+        #     url_key = extract_query_parameters(full_response)
 
         product_details = None  # Default value
         if url_key is not None:
