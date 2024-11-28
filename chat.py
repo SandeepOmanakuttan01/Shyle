@@ -302,7 +302,7 @@ def handle_chat_interaction(prompt):
     panty_coverage=full-coverage,low-coverage,medium-coverage,no-coverage
     panty_waist-level=high-waist,low-waist,medium-waist
     """,
-    "nightwear": """
+    "sleepwear": """
     category : nightwear
     nightwear_feature=intimate,loungewear,maternity,winter-sleepwear
     nightwear_type=babydoll-and-chemise,camisole-and-slip,tops,nightwear-sets,sleep-tee,sleepwear-bottoms,nightgowns,nightgown
@@ -497,8 +497,8 @@ def main():
         # Use radio buttons to select a tab inside the sidebar
         selected_tab = st.radio(
             "Choose a tab:",
-            options=["Bra", "Panty", "lingerie-set","shapewear","clothing","accessories","sportswear","nightwear"],
-            index=["Bra", "Panty", "lingerie-set","shapewear","clothing","accessories","sportswear","nightwear"].index(st.session_state.selected_tab),
+            options=["Bra", "Panty", "lingerie-set","shapewear","clothing","accessories","sportswear","sleepwear"],
+            index=["Bra", "Panty", "lingerie-set","shapewear","clothing","accessories","sportswear","sleepwear"].index(st.session_state.selected_tab),
             horizontal=False,  # Set to False to align vertically in the sidebar
             key="sidebar_radio"  # Unique key for sidebar radio
         )
