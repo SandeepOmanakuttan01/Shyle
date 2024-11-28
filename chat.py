@@ -288,7 +288,7 @@ def handle_chat_interaction(prompt):
    bra-push-up-level=level-1,level-2,level-3
    bra-closure=back-closure,front-closure,slip-on
    brand=susie,taabu,shyle,shyaway
-   size=28 D,DD,E,30 A,B,C,D,DD,E,32 A,B,C,D,DD,E,F,G,H,I,J,34 A,B,C,D,DD,E,F,G,H,I,J,36 A,B,C,D,DD,E,F,G,H,I,J,38 A,B,C,D,DD,E,F,G,H,I,40 B,C,D,DD,E,F,G,H,I,J,42 B,C,D,E,F,G,44 B,C,D,E,F,G ,46 B,C,D,48 B,C,D,50 B,C,D,52 B,C,D
+   size=30a,30b,30c,30d,30dd,32a,32b,32c,32d,32dd,34a,34b,34c,34d,34dd,36a,36b,36c,36d,36dd,38a,38b,38c,38d,38dd,40a,40b,40c,40d,40dd,42a,42b,42c,42d,42dd,44a,44b,44c,44d,44dd,46a,46b,46c,46d,46dd,48a,48b,48c,48d,48dd,50a,50b,50c,50d,50dd,52a,52b,52c,52d,52dd
    price=0-300,1200-1500,1500-1800,300-600,600-900,900-1200
     """,
     "Panty": """
