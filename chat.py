@@ -107,6 +107,26 @@ def save_chat_history(messages):
         db["messages"] = messages
 
 
+def extract_query_parameters(content):
+    """
+    Extracts the query parameters from a plain URL in the given text content.
+
+    Args:
+        content (str): Text content containing a URL.
+
+    Returns:
+        str: Extracted query parameters or None if no URL or query is found.
+    """
+    # Regular expression to match a plain URL
+    url_pattern = r'https?://[^\s]+'
+    match = re.search(url_pattern, content)
+    if match:
+        full_url = match.group(0)
+        # Parse the URL to get query parameters
+        parsed_url = urlparse(full_url)
+        relative_url = f"{parsed_url.path}?{parsed_url.query}" if parsed_url.query else parsed_url.path
+        return relative_url
+    return None
 
 def extract_relative_url(content):
     """
@@ -228,9 +248,9 @@ def display_chat_messages():
                          st.markdown(f"**Qno {message['Qno']}:** {message['content']}")
                     else:
                         st.markdown(message["content"])
-                        # if "product" in message and message["product"] is None:
-                             # st.image(image="https://www.shyaway.com/media/wysiwyg/Sorry-no-results-found-350-x-350.jpg",width=360)
-                             # st.markdown("No image found")
+                        if "product" in message and message["product"] is None:
+                             st.image(image="https://www.shyaway.com/media/wysiwyg/Sorry-no-results-found-350-x-350.jpg",width=360)
+                             st.markdown("No image found")
 
                 if "usage" in message and message["usage"]:
                     usage = message["usage"]
@@ -246,69 +266,6 @@ def display_chat_messages():
                     card(product_details=product_details)
 
 
-# Function to initialize a "hello" prompt if the history is empty
-def initialize_hello_prompt():
-    if not st.session_state.messages:
-        hello_prompt = """
-Your the shyaway product assistent shyley. generate a Shyaway product link based on the following details:
-    •    If only one detail is provided (e.g., size, color, fabric, etc.), include it as a single parameter in the URL.
-    •    If multiple details are given, combine them into a single URL. Ensure all spaces in values are replaced with hyphens (-).
-
-Use the following categories and examples as guidelines:
-    1.    Price Range:
-price=0 - 300,300 - 600,600 - 900,900 - 1,200,1,200 - 1,500,1,500 - 1,800
-Example: https://www.shyaway.com/bra-online/?price=0-499
-    2.    Size:
-size=32F or size=32B,34C
-Example: https://www.shyaway.com/bra-online/?size=32f,34c
-    3.    Offers:
-offers=buy-3-for-1199,buy-2-for-1299,flat-20%-off,buy-3-for-899,flat-50%-off,flat-40%-off,new-arrival
-Example: https://www.shyaway.com/bra-online/?offers=flat-50%-off
-    4.    Color:
-color-family=Black or color-family=Black, White, Skin, Brown, Yellow, Orange, Pink, Red, Green, Blue, Purple, Prints
-Example: https://www.shyaway.com/bra-online/?color-family=blue,pink
-    5.    Fabric:
-fabric=Nylon, Viscose-Spandex, Nylon-Polyester Spandex, Cotton, Cotton-Spandex, Lace, Mesh, Modal, Polyester-Spandex, Polycotton-Spandex, Satin
-Example: https://www.shyaway.com/bra-online/?fabric=nylon,cotton,viscose-spandex
-    6.    Other Categories:
-    •    Bra Type: bra-type=push-up,t-shirt
-    •    Bra Style: bra-feature=backless,bridal
-    •    Coverage: bra-coverage=full-coverage
-    •    Padding: bra-padding=lightly-padded
-    •    Wiring: bra-wiring=wired
-    •    Cup Shape: bra-cup-shape=balconette
-    •    Push-Up Level: bra-push-up-level=level-1
-    •    Closure: bra-closure=back-closure
-
-    7.    Bra Styles:
-bra-feature=Backless,Bridal,Casual,Designer,Fancy-Back,Front-Open,Hi-Support,Lacework,Longline,Moulded,No-Sag,Plus-Size,Printed,Sexy,Sleep,Transparent
-Example: https://www.shyaway.com/bra-online/?bra-feature=backless,printed
-    8.    Bra Types:
-bra-type=Beginners, Bralette, Cami, Everyday, Fashion / Fancy, Minimiser, Push-Up, T-Shirt
-Example: https://www.shyaway.com/bra-online/?bra-type=Beginners
-
-    9.    Padding:
-padding=Non-Padded,Padded,Removable-Padding,Lightly-PaddedBeginners,Bralette,Cami,Everyday,Fashion/Fancy,Minimiser,Push-Up,T-Shirt
-Example: https://www.shyaway.com/bra-online/?bra-padding=non-padded,padded
-    
-    10.Wiring
-wiring = wired,wirefree
-Example: https://www.shyaway.com/bra-online/?bra-wiring=wired,wirefree
-
-    11.Bra Closure
-bra-closure=back-closure,front-closure,slip-on
-Example :https://www.shyaway.com/bra-online/?bra-closure=back-closure,front-closure,slip-on
-For example, combining multiple details:
-
-Input: size=32B,34C, color=Blue, fabric=Nylon
-
-Output:
-https://www.shyaway.com/bra-online/?size=32b,34c&color-family=blue&fabric=nylon
-
-If no relevant link is available, provide the default link:
-https://www.shyaway.com/bra-online/
-"""
-        st.session_state.messages.append({"role": "system", "content": hello_prompt})
 
 
 # Function to handle chat interaction
@@ -455,6 +412,8 @@ def handle_chat_interaction(prompt):
         
         # Process the URL key
         url_key = extract_relative_url(full_response)
+        if url_key is None:
+            url_key = extract_query_parameters(full_response)
 
         product_details = None  # Default value
         if url_key is not None:
@@ -475,9 +434,9 @@ def handle_chat_interaction(prompt):
                 ]
                 if product_details:
                     card(product_details)
-                # else:
-                #     st.image(image="https://www.shyaway.com/media/wysiwyg/Sorry-no-results-found-350-x-350.jpg",width=360)
-                #     st.markdown("No image found")
+                else:
+                    st.image(image="https://www.shyaway.com/media/wysiwyg/Sorry-no-results-found-350-x-350.jpg",width=360)
+                    st.markdown("No image found")
             else:
                 print("Unexpected response:", data)
         
@@ -546,8 +505,8 @@ def main():
         # Use radio buttons to select a tab inside the sidebar
         selected_tab = st.radio(
             "Choose a tab:",
-            options=["Bra", "Panty", "Lingerie Set","shapewear","clothing","accessories","sportswear","nightwear"],
-            index=["Bra", "Panty", "Lingerie Set","shapewear","clothing","accessories","sportswear","nightwear"].index(st.session_state.selected_tab),
+            options=["Bra", "Panty", "lingerie-set","shapewear","clothing","accessories","sportswear","nightwear"],
+            index=["Bra", "Panty", "lingerie-set","shapewear","clothing","accessories","sportswear","nightwear"].index(st.session_state.selected_tab),
             horizontal=False,  # Set to False to align vertically in the sidebar
             key="sidebar_radio"  # Unique key for sidebar radio
         )
