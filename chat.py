@@ -264,6 +264,7 @@ def handle_chat_interaction(prompt):
     user_messages = [msg for msg in st.session_state.messages if msg.get("role") == "user"]
     user_messages_count = len(user_messages)
     category = st.session_state.selected_tab
+    print(category)
     
     st.session_state.messages.append({"role": "user","Qno":user_messages_count, "content": prompt,"category":st.session_state.selected_tab})
     
@@ -303,7 +304,7 @@ def handle_chat_interaction(prompt):
     panty_waist-level=high-waist,low-waist,medium-waist
     """,
     "sleepwear": """
-    category : nightwear
+    category : sleepwear
     nightwear_feature=intimate,loungewear,maternity,winter-sleepwear
     nightwear_type=babydoll-and-chemise,camisole-and-slip,tops,nightwear-sets,sleep-tee,sleepwear-bottoms,nightgowns,nightgown
     color-family=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints
@@ -375,6 +376,8 @@ def handle_chat_interaction(prompt):
     For example, if i am asking for an apple color bra with 32b size then the result should be like category: {category.lower()},[here]url:https://www.shyaway.com/{category.lower()}-online/?color-family=red,green,size:xl  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated"""
      # Get the specific hello_prompt based on the selected_tab
     hello_prompt = f"{category_prompts.get(st.session_state.selected_tab, "")}{common}"
+
+    print(hello_prompt)
     
     last_prompt.append({"role":"system","content":hello_prompt})
     last_prompt.append({"role": "user", "content": prompt})
