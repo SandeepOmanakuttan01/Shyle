@@ -170,7 +170,7 @@ def card(product_details):
                     offer_label2 = ""
                     offer_color2 = "#FF5733"  # Default color
                     
-                    print(product.get("offer"))
+    
                     # Handle 'offer' if it's a list
                     if isinstance(product.get("offer"), list):
                         for i, offer in enumerate(product["offer"]):
