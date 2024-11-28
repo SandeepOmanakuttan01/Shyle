@@ -272,6 +272,7 @@ def display_chat_messages():
 def handle_chat_interaction(prompt):
     user_messages = [msg for msg in st.session_state.messages if msg.get("role") == "user"]
     user_messages_count = len(user_messages)
+    category = st.session_state.selected_tab
     
     st.session_state.messages.append({"role": "user","Qno":user_messages_count, "content": prompt,"category":st.session_state.selected_tab})
     
