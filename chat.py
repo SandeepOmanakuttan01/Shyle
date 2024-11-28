@@ -4,6 +4,7 @@ import re
 from openai import OpenAI
 import streamlit as st
 import os
+from urllib.parse import urlparse
 import shelve
 import requests
 import random
