@@ -109,15 +109,6 @@ def save_chat_history(messages):
 
 
 # def extract_query_parameters(content):
-     """
-    Extracts the query parameters from a plain URL in the given text content.
-
-    Args:
-        content (str): Text content containing a URL.
-
-    Returns:
-        str: Extracted query parameters or None if no URL or query is found.
-    """
     # Regular expression to match a plain URL
     url_pattern = r'https?://[^\s]+'
     match = re.search(url_pattern, content)
