@@ -108,8 +108,7 @@ def save_chat_history(messages):
         db["messages"] = messages
 
 
- def extract_query_parameters(content):
-    # Regular expression to match a plain URL
+def extract_query_parameters(content):
     url_pattern = r'https?://[^\s]+'
     match = re.search(url_pattern, content)
     if match:
