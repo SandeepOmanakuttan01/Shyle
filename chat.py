@@ -406,7 +406,6 @@ def handle_chat_interaction(prompt):
         url_key = extract_relative_url(full_response)
         if url_key is None:
             url_key = extract_query_parameters(full_response)
-            st.markdown("url is none")
 
         product_details = None  # Default value
         if url_key is not None:
