@@ -288,11 +288,10 @@ def handle_chat_interaction(prompt):
    bra-push-up-level=level-1,level-2,level-3
    bra-closure=back-closure,front-closure,slip-on
    brand=susie,taabu,shyle,shyaway
-   size=28:(D,DD,E),30:(A,B,C,D,DD,E),32:(A,B,C,D,DD,E,F,G,H,I,J),34:(A,B,C,D,DD,E,F,G,H,I,J),36:(A,B,C,D,DD,E,F,G,H,I,J),38:(A,B,C,D,DD,E,F,G,H,I),40:(B,C,D,DD,E,F,G,H,I,J),42:(B,C,D,E,F,G),44:(B,C,D,E,F,G),46:(B,C,D),48:(B,C,D),50:(B,C,D),52:(B,C,D)
+   size=28(D,DD,E),30(A,B,C,D,DD,E),32(A,B,C,D,DD,E,F,G,H,I,J),34(A,B,C,D,DD,E,F,G,H,I,J),36(A,B,C,D,DD,E,F,G,H,I,J),38(A,B,C,D,DD,E,F,G,H,I),40(B,C,D,DD,E,F,G,H,I,J),42(B,C,D,E,F,G),44(B,C,D,E,F,G),46(B,C,D),48(B,C,D),50(B,C,D),52(B,C,D)
    price=0-300,1200-1500,1500-1800,300-600,600-900,900-1200
     """,
     "Panty": """
-   price=0-300,300-600,600-900,900-1200
    category : Panty
    offers=buy-3-for-499,buy-3-for-599,flat-20%-off,flat-30,new-arrival
    brand=susie,taabu,shyle,shyaway
@@ -303,6 +302,7 @@ def handle_chat_interaction(prompt):
    panty-feature=bridal,casual,lacework,maternity,no-vpl,plus-size,printed,seamless,sexy,transparent
    panty-coverage=full-coverage,low-coverage,medium-coverage,no-coverage
    panty-waist-level=high-waist,low-waist,medium-waist
+   price=0-300,1200-1500,1500-1800,300-600,600-900,900-1200
     """,
     "lingerie-set":"""
     i want  answers related to shyaway.com alone
