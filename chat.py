@@ -275,7 +275,7 @@ def handle_chat_interaction(prompt):
     category_prompts = {
     "Bra": """
    i want answers related to shyaway.com alone
-   category : Bra
+   category = Bra
    offers=buy-3-for-1199,buy-2-for-1299,flat-20%-off,buy-3-for-899,flat-50%-off,flat-40%-off,new-arrival
    color-family=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints
    fabric=Nylon,Viscose-Spandex,Nylon-Polyester-Spandex,Cotton,Cotton-Spandex,Lace,Mesh,Modal,Polyester-Spandex,Polycotton-Spandex,Satin
@@ -292,7 +292,7 @@ def handle_chat_interaction(prompt):
    price=0-300,1200-1500,1500-1800,300-600,600-900,900-1200
     """,
     "Panty": """
-   category : Panty
+   category = Panty
    offers=buy-3-for-499,buy-3-for-599,flat-20%-off,flat-30,new-arrival
    brand=susie,taabu,shyle,shyaway
    color-family=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints,multicolor
@@ -306,7 +306,7 @@ def handle_chat_interaction(prompt):
     """,
     "lingerie-set":"""
     i want  answers related to shyaway.com alone
-    category : lingerie-set
+    category = lingerie-set
    offers=buy-3-for-499,buy-3-for-599,flat-20%-off,flat-30,new-arrival
    size=38D/XL,40B/XXL,40C/XXL,40D/XXL,32D/S,32 D/DD,34 D/DD,36 D/DD,38 D/DD'40 D/DD,42 D/DD,44 D/DD,46 D/DD,48 D/DD,50 D/DD,52 D/DD,54 D/DD,56 D/DD,58 D/DD,2XL/3XL,4XL/5XL
    brand=susie,taabu,shyle
@@ -329,7 +329,7 @@ def handle_chat_interaction(prompt):
    price=0-300,1200-1500,1500-1800,300-600,600-900,900-1200
     """,
     "sportswear": """
-    category : sportswear
+    category = sportswear
    offers=flat-20%-off
    size=xs,s,m,l,xl,2xl,3xl,XXL,XXXL
    brand=shyaway,shyle,united-classic,van-heusen
@@ -343,7 +343,7 @@ def handle_chat_interaction(prompt):
    price=0-300,1200-1500,1500-1800,300-600,600-900,900-1200
     """,  
     "sleepwear": """
-    category : sleepwear
+    category = sleepwear
    fabric=bamboo,cotton,cotton-spandex,lace,mesh,modal,nylon-spandex,polyester-spandex,satin,viscose
    nightwear-feature=intimate,loungewear,maternity,winter-sleepwear
    nightwear-type=babydoll-and-chemise,camisole-and-slip,tops,nightwear-sets,sleep-tee,sleepwear-bottoms,nightgowns,tops
@@ -353,7 +353,7 @@ def handle_chat_interaction(prompt):
    price=0-300,1200-1500,1500-1800,300-600,600-900,900-1200
     """,
     "shapewear": """
-    category : shapewear
+    category = shapewear
    shapewear_type=Saree,Butt Shaper,Tummy Tucker,Body Shaper,Thigh Shaper,Torso Slimmer,Shaping Panty,Mid-Thigh Shaper,Compression Tights
    size=xs,s,m,l,xl,2xl,3xl,4xl,5xl
    brand=mybra,shyle,united-classic
@@ -363,7 +363,7 @@ def handle_chat_interaction(prompt):
    price=0-300,1200-1500,1500-1800,300-600,600-900,900-1200
     """,
     "accessories":"""
-    category : accessories
+    category = accessories
    accessories-type=bra-bag,bra-essentials,hosiery,masks,socks,boob-tape,adhesive-stick-on,silicone-nipple-pad,bra-extender
    brand=shyle
    color-family=grey,black,white,skin,brown,yellow,orange,pink,red,green,blue,purple,prints,multicolor,jacquard
@@ -372,7 +372,7 @@ def handle_chat_interaction(prompt):
    price=0-300,1200-1500,1500-1800,300-600,600-900,900-1200
     """,
     "clothing":"""
-    category : clothing
+    category = clothing
    clothing-type=Legwear,Scarves,Shrugs & Jackets,Tops
    size=FZ
    brand=shyle
@@ -387,7 +387,7 @@ def handle_chat_interaction(prompt):
 # i have provided attributes and attribute values for each category if a question is raised then i need to convert that as attributes and return as output. Find the synonym,understanding the word to match attribute for each word and match with the attribute values and provide the result which should only match with the attribute or category I gave. For example, if i am asking for an apple color bra with 32b size then the result should be like category: {category.lower()},[here]url:https://www.shyaway.com/{category.lower()}-online/?color-family=red,green,size:xl  and if there are more than one attribute value mention that as comma seperated please note that if we have one category then those attribute and attribute values has to be considered like if the question is related to bra then we should consider only those attributes and the common attributes can be used for all categories but dont deviate other than the attribute values i gave
 # """
     common = f"""i have listed out the category and other attributes and if a question is raised then i need to convert that as attributes and return that as output. Find the synonym,understanding the word to match attribute for each word and match with the attribute values and provide the result which should only match with the attribute or category I gave BY JUSTIFYING YOUR SUGGESTION
-    For example, if i am asking for an apple color bra with 32b size then the result should be like category: {category.lower()},[here]url:https://www.shyaway.com/{category.lower()}-online/?color-family=red,green,size:xl  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated"""
+    For example, if i am asking for an apple color bra with 32b size then the result should be like category: {category.lower()},[here]url:https://www.shyaway.com/{category.lower()}-online/?color-family=red,green,size=xl  one more example like if we are searching for bamboo bra then since we don't have bamboo we can match than with cotton and provide the result CONSIDER THE WHETHER,TYPE OF SUPPORT AND WHICH ATTRIBUTE SUITS THE QUESTIONS CORRECTLY WITH JUSTIFICATION IN SECOND LINE and if there are more than one attribute value mention that as comma seperated"""
     #  # Get the specific hello_prompt based on the selected_tab
     hello_prompt = f"{category_prompts.get(st.session_state.selected_tab, "")}{common}"
 
