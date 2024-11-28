@@ -529,7 +529,7 @@ def main():
         elif st.session_state.selected_tab == "sportswear":
             st.subheader("Sportswear Section")
             st.write("Explore the latest in Sportswear  here!")
-        elif st.session_state.selected_tab == "nightwear":
+        elif st.session_state.selected_tab == "sleepwear":
             st.subheader("Nightwear Section")
             st.write("Explore the latest in Nightwear here!")
 
