@@ -226,6 +226,51 @@ def card(product_details):
                             unsafe_allow_html=True
                         )
 
+def findCategoryFromContentByGpt(query):
+    last_prompt =[]
+    last_prompt.append({"role":"system","content":"""
+    i want to know the category from the query 
+categories: Bra, panty, lingerie set,s shapewear, sportswear,nightwear, accessories, clothing 
+analysis of the query to find the category
+output:
+category: bra,panty
+    """
+    })
+
+    last_prompt.append({"role":"user","content":query})
+    response = client.chat.completions.create(
+            model=st.session_state["openai_model"],
+            messages=last_prompt
+        )
+    value= response.choices[0].message.content
+    category = findCategoryFromContent(value)
+    return category
+
+
+def findCategoryFromContent(content):
+    # Define a mapping of keywords to categories
+    category_mapping = {
+        "shape": "shapewear",
+        "bra": "Bra",
+        "lingerie": "lingerie-set",
+        "sports": "sportswear",
+        "cloth": "clothing",
+        "accesor": "accessories",
+        "pant": "Panty",
+    }
+
+    # Create a regex pattern to match any of the keywords
+    pattern = r"\b(" + "|".join(category_mapping.keys()) + r")\w*\b"
+
+    # Find all matches in the content
+    matches = re.findall(pattern, content, re.IGNORECASE)
+
+    # Map matches to their respective categories
+    matched_categories = {category_mapping[match.lower()] for match in matches}
+
+    return matched_categories
+
+
 
 def display_chat_messages():
     for i, message in enumerate(st.session_state.messages):
@@ -263,10 +308,21 @@ def display_chat_messages():
 def handle_chat_interaction(prompt):
     user_messages = [msg for msg in st.session_state.messages if msg.get("role") == "user"]
     user_messages_count = len(user_messages)
-    category = st.session_state.selected_tab
-    print(category)
+
+    if(st.session_state.selected_tab !="All"):
+        category = st.session_state.selected_tab
+    else:
+        category = findCategoryFromContent(prompt)
+        if category:
+            category = list(category)[0]
+            # print(category)
+        else:
+            category = findCategoryFromContentByGpt(prompt)
+            category = list(category)[0]
+            print(category)
+
     
-    st.session_state.messages.append({"role": "user","Qno":user_messages_count, "content": prompt,"category":st.session_state.selected_tab})
+    st.session_state.messages.append({"role": "user","Qno":user_messages_count, "content": prompt,"category":category})
     
     with st.chat_message("user", avatar=USER_AVATAR):
         st.markdown(f"**Qno {user_messages_count+1}:** {prompt}")
@@ -335,7 +391,7 @@ def handle_chat_interaction(prompt):
    price=0-300,1200-1500,1500-1800,300-600,600-900,900-1200
    Convert the query into attributes for the Lingerie Set category. Match synonyms or contextual words with the listed lingerie set attributes and provide the result in the following format:
    category: lingerie-set, url: https://www.shyaway.com/lingerie-set-online/?{attribute=value}
-   Example: category: lingerie-set, url: https://www.shyaway.com/lingerie-set-online/?lingerieset-bra-seam=seamless&color-family=skin&size=medium  
+   Example: category: lingerie-set, url: https://www.shyaway.com/lingerie-set-online/?lingerieset-bra-seam=seamless&color-family=skin&size=m  
     """,
     "sportswear": """
     category : sportswear
@@ -513,11 +569,13 @@ Example : category: bra, url: https://www.shyaway.com/bra-online/?color-family=r
 """
 
 }
-    common = """If no direct match is found, infer the closest matching attribute based on context and justify your suggestion.List multiple matching attribute values as comma-separated.dont divaite from i gave the prompt should provide requested attribute and value if the user ask size you should provide """
+    common = """
+    If no direct match is found, infer the closest matching attribute based on context and justify your suggestion.
+    List multiple matching attribute values as comma-separated.dont divaite from i gave the prompt should provide requested attribute and value if the user ask size you should provide. 
+    if type exist in query it should be first query param
+    """
     # Get the specific hello_prompt based on the selected_tab
-    hello_prompt = f"{category_prompts.get(st.session_state.selected_tab, "")}{common}"
-
-    print(hello_prompt)
+    hello_prompt = f"{category_prompts.get(category, "")}{common}"
     
     last_prompt.append({"role":"system","content":hello_prompt})
     last_prompt.append({"role": "user", "content": prompt})
