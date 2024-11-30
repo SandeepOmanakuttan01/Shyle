@@ -570,8 +570,9 @@ Example : category: bra, url: https://www.shyaway.com/bra-online/?color-family=r
 
 }
     common = """
-    If no direct match is found, infer the closest matching attribute based on context and justify your suggestion.
+    If no direct match is found, infer the closest matching attribute based on context.
     List multiple matching attribute values as comma-separated.dont divaite from i gave the prompt should provide requested attribute and value if the user ask size you should provide. 
+    should provide justify your suggestion
     """
     # Get the specific hello_prompt based on the selected_tab
     hello_prompt = f"{category_prompts.get(category, "")}{common}"
