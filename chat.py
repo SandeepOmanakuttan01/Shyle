@@ -572,7 +572,6 @@ Example : category: bra, url: https://www.shyaway.com/bra-online/?color-family=r
     common = """
     If no direct match is found, infer the closest matching attribute based on context and justify your suggestion.
     List multiple matching attribute values as comma-separated.dont divaite from i gave the prompt should provide requested attribute and value if the user ask size you should provide. 
-    if type exist in query it should be first query param
     """
     # Get the specific hello_prompt based on the selected_tab
     hello_prompt = f"{category_prompts.get(category, "")}{common}"
@@ -683,7 +682,6 @@ def main():
         if st.button("Delete Chat History", key="delete_chat_history_button"):
             st.session_state.messages = []
             save_chat_history([])
-            initialize_hello_prompt()  # Reload the hello prompt
 
         # Placeholder for question count
         question_count_placeholder = st.empty()
