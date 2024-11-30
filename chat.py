@@ -607,8 +607,7 @@ Example : category: bra, url: https://www.shyaway.com/bra-online/?color-family=r
         url_key = extract_relative_url(full_response)
         if url_key is None:
             url_key = extract_query_parameters(full_response)
-        url_key = url_key.replace(":","").replace("(","").replace(")","")
-
+	    
         product_details = None  # Default value
         if url_key is not None:
             result = get_product_list(url_key, page=1, limit=20)
