@@ -698,8 +698,8 @@ def main():
         # Use radio buttons to select a tab inside the sidebar
         selected_tab = st.radio(
             "Choose a tab:",
-            options=["Bra", "Panty", "lingerie-set","shapewear","clothing","accessories","sportswear","nightwear","All"],
-            index=["Bra", "Panty", "lingerie-set","shapewear","clothing","accessories","sportswear","nightwear","All"].index(st.session_state.selected_tab),
+            options=["Bra", "Panty", "lingerie-set","shapewear","clothing","accessories","sportswear","sleepwear","All"],
+            index=["Bra", "Panty", "lingerie-set","shapewear","clothing","accessories","sportswear","sleepwear","All"].index(st.session_state.selected_tab),
             horizontal=False,  # Set to False to align vertically in the sidebar
             key="sidebar_radio"  # Unique key for sidebar radio
         )
@@ -730,7 +730,7 @@ def main():
         elif st.session_state.selected_tab == "sportswear":
             st.subheader("Sportswear Section")
             st.write("Explore the latest in Sportswear  here!")
-        elif st.session_state.selected_tab == "nightwear":
+        elif st.session_state.selected_tab == "sleepwear":
             st.subheader("Nightwear Section")
             st.write("Explore the latest in Nightwear here!")
         else:
