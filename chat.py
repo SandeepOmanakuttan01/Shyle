@@ -336,7 +336,7 @@ def handle_chat_interaction(prompt):
    color-family=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints
    fabric=Nylon,Viscose-Spandex,Nylon-Polyester-Spandex,Cotton,Cotton-Spandex,Lace,Mesh,Modal,Polyester-Spandex,Polycotton-Spandex,Satin
    bra-type=Beginners,Bralette,Cami,Everyday,Fashion-Fancy,Minimiser,Push-Up,T-Shirt,Nursing
-   bra-feature=Backless,Bridal,Casual,Designer,Fancy-Back,Front-Open,Hi-Support,Lacework,Longline,Moulded,No-Sag,Plus-Size,Printed,Sexy,Sleep,Transparent
+   bra-feature=backless,bridal,casual,designer,fancy-back,front-open,hi-support,lacework,longline,moulded,no-sag,plus-size,printed,sexy,sleep,transparent  
    bra-coverage=full-coverage,3-4-th-Coverage,Demi-Coverage
    bra-padding=Non-Padded,Padded,Removable-Padding,Lightly-Padded
    bra-wiring=wired,wirefree
@@ -468,7 +468,7 @@ category : Bra
    color-family=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints
    fabric=Nylon,Viscose-Spandex,Nylon-Polyester-Spandex,Cotton,Cotton-Spandex,Lace,Mesh,Modal,Polyester-Spandex,Polycotton-Spandex,Satin
    bra-type=Beginners,Bralette,Cami,Everyday,Fashion-Fancy,Minimiser,Push-Up,T-Shirt,Nursing
-   bra-feature=Backless,Bridal,Casual,Designer,Fancy-Back,Front-Open,Hi-Support,Lacework,Longline,Moulded,No-Sag,Plus-Size,Printed,Sexy,Sleep,Transparent
+   bra-feature=backless,bridal,casual,designer,fancy-back,front-open,hi-support,lacework,longline,moulded,no-sag,plus-size,printed,sexy,sleep,transparent
    bra-coverage=full-coverage,3-4-th-Coverage,Demi-Coverage
    bra-padding=Non-Padded,Padded,Removable-Padding,Lightly-Padded
    bra-wiring=wired,wirefree
