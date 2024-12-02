@@ -142,7 +142,7 @@ def card(product_details):
     if product_details is None:
         st.markdown("No releated images found")
     else:
-        rows = len(product_details) // 4 + (len(product_details) % 4 > 0)  # Calculate the number of rows
+        rows = len(product_details[:4]) // 4 + (len(product_details[:4]) % 4 > 0)  # Calculate the number of rows
 
         for row in range(rows):
             cols = st.columns(4, gap="medium")  # 4 columns with equal padding
@@ -596,13 +596,6 @@ Example : category: bra, url: https://www.shyaway.com/bra-online/?color-family=r
     
         full_response = response.choices[0].message.content        
         message_placeholder.markdown(full_response)
-        st.markdown(
-            f"""
-            **Prompt**:&nbsp;&nbsp;{usage_info.prompt_tokens} &nbsp;&nbsp;&nbsp;&nbsp;**Answer**:&nbsp;&nbsp;{usage_info.completion_tokens} &nbsp;&nbsp;&nbsp;&nbsp;**Total**:&nbsp;&nbsp;{usage_info.total_tokens}
-            """,
-            unsafe_allow_html=True
-        )
-        
         # Process the URL key
         url_key = extract_relative_url(full_response)
         if url_key is None:
@@ -615,7 +608,7 @@ Example : category: bra, url: https://www.shyaway.com/bra-online/?color-family=r
             
             if "data" in data and "getProductList" in data["data"]:
                 items = data["data"]["getProductList"]["data"]["items"]
-                random_items = random.sample(items, min(len(items), 4))  # Randomly select up to 4 items
+                random_items = random.sample(items, min(len(items), 20))  # Randomly select up to 4 items
                 product_details = [
                     {
                         'product_link': item['product_link'],
@@ -625,6 +618,12 @@ Example : category: bra, url: https://www.shyaway.com/bra-online/?color-family=r
                     }
                     for item in random_items
                 ]
+                st.markdown(
+                    f"""
+                    **Prompt**:&nbsp;&nbsp;{usage_info.prompt_tokens} &nbsp;&nbsp;&nbsp;&nbsp;**Answer**:&nbsp;&nbsp;{usage_info.completion_tokens} &nbsp;&nbsp;&nbsp;&nbsp;**Total**:&nbsp;&nbsp;{usage_info.total_tokens}
+                    &nbsp;&nbsp;&nbsp;&nbsp;**img Count**:{len(product_details)} &nbsp;&nbsp;""",
+                    unsafe_allow_html=True
+                )
                 if product_details:
                     card(product_details)
                 else:
@@ -632,6 +631,13 @@ Example : category: bra, url: https://www.shyaway.com/bra-online/?color-family=r
                     st.markdown("No image found")
             else:
                 print("Unexpected response:", data)
+        else:
+            st.markdown(
+        f"""
+        **Prompt**:&nbsp;&nbsp;{usage_info.prompt_tokens} &nbsp;&nbsp;&nbsp;&nbsp;**Answer**:&nbsp;&nbsp;{usage_info.completion_tokens} &nbsp;&nbsp;&nbsp;&nbsp;**Total**:&nbsp;&nbsp;{usage_info.total_tokens}
+        &nbsp;&nbsp;&nbsp;&nbsp;**img Count**:{0} &nbsp;&nbsp;""",
+        unsafe_allow_html=True
+    )
         
         st.session_state.messages.append({
             "role": "assistant",
