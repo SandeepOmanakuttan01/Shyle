@@ -720,7 +720,7 @@ def main():
 
         # Initialize selected tab in session state
         if "selected_tab" not in st.session_state:
-            st.session_state.selected_tab = "Bra"
+            st.session_state.selected_tab = "All"
 
         # Use radio buttons to select a tab inside the sidebar
         selected_tab = st.radio(
@@ -734,7 +734,7 @@ def main():
         st.divider()
 
         if "qa_state" not in st.session_state:
-            st.session_state.qa_state = "single"
+            st.session_state.qa_state = "bulk"
 
         qa_state = st.radio(
             "Choose a QA Type:",
