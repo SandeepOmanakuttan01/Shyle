@@ -349,7 +349,7 @@ def handle_chat_interaction(prompt):
    bra-push-up-level=level-1,level-2,level-3
    bra-closure=back-closure,front-closure,slip-on
    brand=susie,taabu,shyle,shyaway
-   size=28(D,DD,E),30(A,B,C,D,DD,E),32(A,B,C,D,DD,E,F,G,H,I,J),34(A,B,C,D,DD,E,F,G,H,I,J),36(A,B,C,D,DD,E,F,G,H,I,J),38(A,B,C,D,DD,E,F,G,H,I),40(B,C,D,DD,E,F,G,H,I,J),42(B,C,D,E,F,G),44(B,C,D,E,F,G),46(B,C,D),48(B,C,D),50(B,C,D),52(B,C,D)
+   size=28d,28dd,28e,30a,30b,30c,30d,30dd,30e,32a,32b,32c,32d,32dd,32e,32f,32g,32h,32i,32j,34a,34b,34c,34d,34dd,34e,34f,34g,34h,34i,34j,36a,36b,36c,36d,36dd,36e,36f,36g,36h,36i,38a,38b,38c,38d,38dd,38e,38f,38g,38h,38i,40b,40c,40d,40dd,40e,40f,40g,40h,40i,40j,42b,42c,42d,42e,42f,42g,44b,44c,44d,44e,44f,44g,46b,46c,46d,48b,48c,48d,50b,50c,50d,52b,52c,52d
    price=0-300,1200-1500,1500-1800,300-600,600-900,900-1200
    Convert the query into attributes for the Bra category. Match synonyms or contextual words with the listed bra attributes and provide the result in the following format:
    category: bra, url: https://www.shyaway.com/bra-online/?{attribute=value}
@@ -481,7 +481,7 @@ category : Bra
    bra-push-up-level=level-1,level-2,level-3
    bra-closure=back-closure,front-closure,slip-on
    brand=susie,taabu,shyle,shyaway
-   size=28(D,DD,E),30(A,B,C,D,DD,E),32(A,B,C,D,DD,E,F,G,H,I,J),34(A,B,C,D,DD,E,F,G,H,I,J),36(A,B,C,D,DD,E,F,G,H,I,J),38(A,B,C,D,DD,E,F,G,H,I),40(B,C,D,DD,E,F,G,H,I,J),42(B,C,D,E,F,G),44(B,C,D,E,F,G),46(B,C,D),48(B,C,D),50(B,C,D),52(B,C,D)
+   size=28d,28dd,28e,30a,30b,30c,30d,30dd,30e,32a,32b,32c,32d,32dd,32e,32f,32g,32h,32i,32j,34a,34b,34c,34d,34dd,34e,34f,34g,34h,34i,34j,36a,36b,36c,36d,36dd,36e,36f,36g,36h,36i,38a,38b,38c,38d,38dd,38e,38f,38g,38h,38i,40b,40c,40d,40dd,40e,40f,40g,40h,40i,40j,42b,42c,42d,42e,42f,42g,44b,44c,44d,44e,44f,44g,46b,46c,46d,48b,48c,48d,50b,50c,50d,52b,52c,52d
    price=0-300,1200-1500,1500-1800,300-600,600-900,900-1200
 category : Panty
    offers=buy-3-for-499,buy-3-for-599,flat-20%-off,flat-30,new-arrival
