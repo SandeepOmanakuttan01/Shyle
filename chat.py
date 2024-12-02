@@ -9,7 +9,6 @@ import shelve
 import requests
 import random
 
-
 # Constants
 USER_AVATAR = "👤"
 BOT_AVATAR = "🤖"
@@ -270,7 +269,8 @@ def findCategoryFromContent(content):
 
     return matched_categories
 
-
+def count_no_product_messages(messages):
+    return sum(1 for message in messages if message.get("product") is None and message.get("role") == "assistant")
 
 def display_chat_messages():
     for i, message in enumerate(st.session_state.messages):
@@ -651,7 +651,10 @@ def display_total_question_count(placeholder):
     # Calculate total tokens used by the user prompts and assistant responses
     total_prompt_tokens = sum(msg["usage"].prompt_tokens for msg in st.session_state.messages if "usage" in msg)
     total_answer_tokens = sum(msg["usage"].completion_tokens for msg in st.session_state.messages if "usage" in msg)
+    
     total_tokens = total_prompt_tokens + total_answer_tokens
+
+    no_product_count = count_no_product_messages(st.session_state.messages)
     
     # Display the information
     placeholder.markdown(f"""
@@ -661,10 +664,24 @@ def display_total_question_count(placeholder):
 
     **Total Answer Tokens Used**: {total_answer_tokens}  
 
-    **Total Tokens Used**: {total_tokens}  
+    **Total Tokens Used**: {total_tokens}
+
+    **Total No Record Count**: {no_product_count}
+
     """)
 
 
+
+def getBulkQuestion(content):
+    questions = []
+    current_question = ""
+    for line in content.splitlines():
+        if line.strip():  # Skip empty lines
+            current_question += line.strip() + " "
+            if current_question.strip().endswith('?'):
+                questions.append(current_question.strip())
+                current_question = ""
+    return questions
 
 
 def main():
@@ -696,14 +713,35 @@ def main():
 
         # Use radio buttons to select a tab inside the sidebar
         selected_tab = st.radio(
-            "Choose a tab:",
+            "Choose a Category:",
             options=["Bra", "Panty", "lingerie-set","shapewear","clothing","accessories","sportswear","sleepwear","All"],
             index=["Bra", "Panty", "lingerie-set","shapewear","clothing","accessories","sportswear","sleepwear","All"].index(st.session_state.selected_tab),
-            horizontal=False,  # Set to False to align vertically in the sidebar
+            horizontal=True,  # Set to False to align vertically in the sidebar
             key="sidebar_radio"  # Unique key for sidebar radio
         )
 
+        st.divider()
+
+        if "qa_state" not in st.session_state:
+            st.session_state.qa_state = "single"
+
+        qa_state = st.radio(
+            "Choose a QA Type:",
+            options=["single","bulk"],
+            index=["single","bulk"].index(st.session_state.qa_state),
+            horizontal= True,
+            key="sidebar_radio_qa"
+        )
+
+        st.divider()
+
+
+
+
         # Update session state only if the selected tab changes
+        if qa_state != st.session_state.qa_state:
+            st.session_state.qa_state = qa_state
+
         if selected_tab != st.session_state.selected_tab:
             st.session_state.selected_tab = selected_tab
 
@@ -741,7 +779,13 @@ def main():
 
     # Main chat input
     if prompt := st.chat_input("How can I help?"):
-        handle_chat_interaction(prompt)
+        if st.session_state.qa_state == "single":
+            handle_chat_interaction(prompt)
+        else:
+            questions=getBulkQuestion(prompt)
+            for q in questions:
+                handle_chat_interaction(q)
+
 
 
 
