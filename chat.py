@@ -290,10 +290,15 @@ def display_chat_messages():
 
                 if "usage" in message and message["usage"]:
                     usage = message["usage"]
+                    product_count = 0
+                    if "product" in message and message["product"] is None:
+                        product_count = 0
+                    else:
+                        product_count = len(message['product'])
                     st.markdown(
                         f"""
                         **Prompt**:&nbsp;&nbsp;{usage.prompt_tokens} &nbsp;&nbsp;&nbsp;&nbsp;**Answer**:&nbsp;&nbsp;{usage.completion_tokens} &nbsp;&nbsp;&nbsp;&nbsp;**Total**:&nbsp;&nbsp;{usage.total_tokens}
-                        """,
+                        &nbsp;&nbsp;&nbsp;&nbsp;**Img Count**:&nbsp;&nbsp;{product_count}""",
                         unsafe_allow_html=True
                     )
                 # Display the image if image_url exists
