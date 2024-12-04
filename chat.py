@@ -696,7 +696,6 @@ def getBulkQuestion(content):
                 current_question = ""
     return questions
 
-
 def main():
     # Create placeholders for the title and question count
     title_placeholder = st.empty()
@@ -799,7 +798,7 @@ def main():
             for q in questions:
                 handle_chat_interaction(q)
 
-  components.html("""
+    components.html("""
         <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
         <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
         <df-messenger
