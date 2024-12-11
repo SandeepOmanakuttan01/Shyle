@@ -712,7 +712,7 @@ def main():
         # Add a unique key to the button
         if st.button("Delete Chat History", key="delete_chat_history_button"):
             st.session_state.messages = []
-            save_chat_history([])
+            # save_chat_history([])
 
         # Placeholder for question count
         question_count_placeholder = st.empty()
