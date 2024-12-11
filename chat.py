@@ -339,20 +339,21 @@ def handle_chat_interaction(prompt):
     "Bra": """
    i want answers related to shyaway.com alone
    category : Bra
-   offers=buy-3-for-1199,buy-2-for-1299,flat-20%-off,buy-3-for-899,flat-50%-off,flat-40%-off,new-arrival
-   color-family=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints
-   fabric=Nylon,Viscose-Spandex,Nylon-Polyester-Spandex,Cotton,Cotton-Spandex,Lace,Mesh,Modal,Polyester-Spandex,Polycotton-Spandex,Satin
-   bra-type=Beginners,Bralette,Cami,Everyday,Fashion-Fancy,Minimiser,Push-Up,T-Shirt,Nursing
-   bra-feature=backless,bridal,casual,designer,fancy-back,front-open,hi-support,lacework,longline,moulded,no-sag,plus-size,printed,sexy,sleep,transparent  
-   bra-coverage=full-coverage,3-4-th-Coverage,Demi-Coverage
-   bra-padding=Non-Padded,Padded,Removable-Padding,Lightly-Padded
-   bra-wiring=wired,wirefree
-   bra-cup-shape=Balconette,Balcony,Full-Cup,Plunge,T-Shirt-Cup
-   bra-push-up-level=level-1,level-2,level-3
-   bra-closure=back-closure,front-closure,slip-on
-   brand=susie,taabu,shyle,shyaway
-   size=28d,28dd,28e,30a,30b,30c,30d,30dd,30e,32a,32b,32c,32d,32dd,32e,32f,32g,32h,32i,32j,34a,34b,34c,34d,34dd,34e,34f,34g,34h,34i,34j,36a,36b,36c,36d,36dd,36e,36f,36g,36h,36i,38a,38b,38c,38d,38dd,38e,38f,38g,38h,38i,40b,40c,40d,40dd,40e,40f,40g,40h,40i,40j,42b,42c,42d,42e,42f,42g,44b,44c,44d,44e,44f,44g,46b,46c,46d,48b,48c,48d,50b,50c,50d,52b,52c,52d
-   price=0-300,1200-1500,1500-1800,300-600,600-900,900-1200
+  offers=buy-3-for-1199,buy-2-for-1299,flat-20%-off,buy-3-for-899,flat-50%-off,flat-40%-off,new-arrival
+color-family=Grey,Black,White,Skin,Brown,Yellow,Orange,Pink,Red,Green,Blue,Purple,Prints
+fabric=cotton,cotton-spandex,lace,mesh,modal,nylon,nylon-polyester-spandex,nylon-spandex,polycotton-spandex,polyester-spandex,satin,silicone
+bra-type=Beginners,Bralette,Cami,Everyday,Fashion-Fancy,Minimiser,Push-Up,T-Shirt,Nursing
+bra-feature=backless,bridal,casual,fancy-back,front-open,hi-support,lacework,longline,moulded,no-sag,plus-size,sexy,sleep,transparent  
+bra-coverage=full-coverage,3-4-th-Coverage,Demi-Coverage
+bra-padding=Non-Padded,Padded,Removable-Padding,Lightly-Padded
+bra-wiring=wired,wirefree
+bra-cup-shape=Balconette,Balcony,Full-Cup,Plunge,T-Shirt-Cup
+bra-push-up-level=level-1,level-2,level-3
+bra-closure=back-closure,front-closure,slip-on
+bra-straps=detachable,adjustable,multiway,non-adjustable,non-detachable,strapless,transparent-strap
+brand=susie,taabu,shyle,shyaway
+size=28d,28dd,28e,30a,30b,30c,30d,30dd,30e,32a,32b,32c,32d,32dd,32e,32f,32g,32h,32i,32j,34a,34b,34c,34d,34dd,34e,34f,34g,34h,34i,34j,36a,36b,36c,36d,36dd,36e,36f,36g,36h,36i,38a,38b,38c,38d,38dd,38e,38f,38g,38h,38i,40b,40c,40d,40dd,40e,40f,40g,40h,40i,40j,42b,42c,42d,42e,42f,42g,44b,44c,44d,44e,44f,44g,46b,46c,46d,48b,48c,48d,50b,50c,50d,52b,52c,52d
+price=0-300,1200-1500,1500-1800,300-600,600-900,900-1200
    Convert the query into attributes for the Bra category. Match synonyms or contextual words with the listed bra attributes and provide the result in the following format:
    category: bra, url: https://www.shyaway.com/bra-online/?{attribute=value}
    Example : category: bra, url: https://www.shyaway.com/bra-online/?color-family=red,green&size=32B
